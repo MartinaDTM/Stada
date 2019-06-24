@@ -682,7 +682,7 @@ def transforming_initiatives(initiatives,
     impacts: DataFrame
         Table containing impacts data
     """    
-    initiatives=initiatives[['load_id','initiative_id','stage','weekly_status','report']]
+    initiatives=initiatives[['load_id','initiative_id','stage','weekly_status','report','initiative_name','sub_workstream']]
 
     impacts=impacts_description.merge(impacts_value,how='inner',on=['id', 'load_id', 'impact_id','savings_type'])
     impacts=impacts.merge(initiatives,how='left',on=['load_id','initiative_id'])
@@ -763,7 +763,8 @@ def transofmring_impact_saving_implemented(impacts_with_new,impacts):
     actual = impacts_with_new[(impacts_with_new.purpose == 'Actual')]
     forcast = impacts_with_new[(impacts_with_new.purpose == 'Forecast')]
     
-    actual_forcast = actual.merge(forcast[['initiative_id','impact_id','savings_type','date','wave_value']],on = ['initiative_id','impact_id','savings_type','date'])
+    actual_forcast = actual.merge(forcast[['initiative_id','impact_id','savings_type','date','wave_value']],
+                                  on = ['initiative_id','impact_id','savings_type','date'])
     actual_forcast['wave_value'] =actual_forcast.apply(lambda row: row['wave_value_x'] if row['wave_value_x'] >0 else row['wave_value_y'] , axis = 1)
     actual_forcast['purpose'] ='Actuals & Forecast'
     actual_forcast.drop(['wave_value_x','wave_value_y'],axis =1,inplace = True )
@@ -777,7 +778,8 @@ def transofmring_impact_saving_implemented(impacts_with_new,impacts):
                                                 'savings_type',
                                                 'date',
                                                 'wave_value',
-                                                'report']]
+                                                'report',
+                                                'initiative_name','sub_workstream']]
 
     saving = 'Implemented'
     imp=impacts_with_new_selected.query('savings_type==@saving') #.copy()
@@ -824,7 +826,7 @@ def transofmring_impact_saving_implemented(impacts_with_new,impacts):
     impacts_all=pl.append(imp,ignore_index=True)
     
     impacts_out=impacts_with_new.merge(impacts_all,how='left',on=['initiative_id','impact_id',\
-                                                        'purpose','savings_type', 'wave_value', 'date','report'])
+                                                        'purpose','savings_type', 'wave_value', 'date','report','initiative_name','sub_workstream'])
     
     
        
@@ -851,7 +853,7 @@ def creating_impact_simple(impacts_out):
 
     col = ['id', 'load_id', 'initiative_id', 'impact_id', 'workstream', 'impact_geography_country',
                'metric_metric_category', 'metric_metric', 'allocation_area_workstream', 'allocation_area_sub_workstream',
-              'run_rate', 'savings_type', 'purpose', 'date', 'stage', 'weekly_status', 'wave_value', 'value', 'value_type','report']
+              'run_rate', 'savings_type', 'purpose', 'date', 'stage', 'weekly_status', 'wave_value', 'value', 'value_type','report','initiative_name','sub_workstream']
 
     impacts_simple = impacts_simple[col]
 
@@ -1003,13 +1005,15 @@ def create_new_columns_and_impace_2(impacts_simple):
            'impact_geography_country', 'metric_metric_category', 'metric_metric',
            'allocation_area_workstream', 'allocation_area_sub_workstream',
           'savings_type', 'purpose', 'date', 'stage', 'weekly_status',
-           'wave_value', 'value', 'value_type','report']
+           'wave_value', 'value', 'value_type','report','initiative_name',
+       'sub_workstream']
     
     impacts_simple[ 'impact_geography_country'] =     impacts_simple[ 'impact_geography_country'].fillna('-1')
     impacts_simple_grouped = impacts_simple[list_columns_to_keep].groupby(['load_id', 'initiative_id',  'workstream',
           'impact_geography_country', 'metric_metric_category', 'metric_metric',
            'allocation_area_workstream', 'allocation_area_sub_workstream',
-          'savings_type', 'purpose', 'date', 'stage', 'weekly_status','value_type','report' ]  ).sum().reset_index()
+          'savings_type', 'purpose', 'date', 'stage', 'weekly_status','value_type','report','initiative_name',
+       'sub_workstream' ]  ).sum().reset_index()
     
     impacts_simple_grouped[ 'impact_geography_country'] =     impacts_simple_grouped[ 'impact_geography_country'].replace('-1',np.NaN)
 
