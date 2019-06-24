@@ -1,0 +1,2929 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.6.2" />
+<title>Reporting API documentation</title>
+<meta name="description" content="Created on Wed May 22 13:07:06 2019 …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase;cursor:pointer}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title"><code>STADA reporting</code></h1>
+</header>
+<section id="section-intro">
+<p>Created on Tue June 11 13:07:06 2019</p>
+<p>@author: Martina Naumovska - Data Masters </p>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python"># -*- coding: utf-8 -*-
+&#34;&#34;&#34;
+Created on Wed May 22 13:07:06 2019
+
+@author: Martina Naumovska - Data Masters 
+&#34;&#34;&#34;
+def initialize_columns ():
+    INITIATIVE_COLUMNS = [&#39;id&#39;,
+     &#39;load_id&#39;,
+     &#39;initiative_id&#39;,
+     &#39;initiative_name&#39;,
+     &#39;stage&#39;,
+     &#39;weekly_status&#39;,
+     &#39;card_type&#39;,
+     &#39;cost_type&#39;,
+     &#39;geography_triggered&#39;,
+     &#39;report&#39;,
+     &#39;fte_type&#39;,
+     &#39;description_of_initiative_and_assumption_used&#39;,
+     &#39;what_is_the_money_step_-_how_does_this_add_value&#39;,
+     &#39;workstream&#39;,
+     &#39;sub-workstream&#39;,
+     &#39;initiative_owner&#39;,
+     &#39;initiative_owner_back-up&#39;,
+     &#39;initiative_lead_approver&#39;,
+     &#39;sponsor_approver&#39;,
+     &#39;finance_approver&#39;,
+     &#39;to_approver&#39;,
+     &#39;recurring_cash_impact&#39;,
+     &#39;one-time_cash_impact&#39;,
+     &#39;implementation_cost&#39;,
+     &#39;l1_actual_date&#39;,
+     &#39;l2_actual_date&#39;,
+     &#39;l3_planned_date&#39;,
+     &#39;l3_actual_date&#39;,
+     &#39;l3_forecast_date&#39;,
+     &#39;l3_latest_estimated_date&#39;,
+     &#39;l4_planned_date&#39;,
+     &#39;l4_actual_date&#39;,
+     &#39;l4_forecast_date&#39;,
+     &#39;l4_latest_estimated_date&#39;,
+     &#39;l5_actual_date&#39;,
+     &#39;sub_for_l2_approv_date&#39;,
+     &#39;sub_for_l3_approv_date&#39;,
+     &#39;sub_for_l4_approv_date&#39;,
+     &#39;sub_for_l5_approv_date&#39;]
+    
+    MILESTONES_COLUMNS = [&#39;id&#39;,
+     &#39;load_id&#39;,
+     &#39;milestone_id&#39;,
+     &#39;initiative_id&#39;,
+     &#39;initiative_name&#39;,
+     &#39;milestone_name&#39;,
+     &#39;status&#39;,
+     &#39;planning_summary&#39;,
+     &#39;planning_check&#39;,
+     &#39;owner&#39;,
+     &#39;start_date&#39;,
+     &#39;end_date&#39;]
+    
+    
+    IMPACTS_COLUMNS = [&#39;id&#39;,
+     &#39;load_id&#39;,
+     &#39;initiative_id&#39;,
+     &#39;impact_id&#39;,
+     &#39;initiative_name&#39;,
+     &#39;Stage&#39;,
+     &#39;Weekly status&#39;,
+     &#39;Workstream&#39;,
+     &#39;Initiative owner&#39;,
+     &#39;L4 planned date&#39;,
+     &#39;Impact geography &gt; Country&#39;,
+     &#39;Impact status&#39;,
+     &#39;Metric &gt; Metric Category&#39;,
+     &#39;Metric &gt; Metric&#39;,
+     &#39;Allocation area &gt; Workstream&#39;,
+     &#39;Allocation area &gt; Sub-Workstream&#39;,
+     &#39;purpose&#39;,
+     &#39;Run Rate&#39;,
+     &#39;2017_10_01&#39;,
+     &#39;2017_11_01&#39;,
+     &#39;2017_12_01&#39;,
+     &#39;2018_01_01&#39;,
+     &#39;2018_02_01&#39;,
+     &#39;2018_03_01&#39;,
+     &#39;2018_04_01&#39;,
+     &#39;2018_05_01&#39;,
+     &#39;2018_06_01&#39;,
+     &#39;2018_07_01&#39;,
+     &#39;2018_08_01&#39;,
+     &#39;2018_09_01&#39;,
+     &#39;2018_10_01&#39;,
+     &#39;2018_11_01&#39;,
+     &#39;2018_12_01&#39;,
+     &#39;2019_01_01&#39;,
+     &#39;2019_02_01&#39;,
+     &#39;2019_03_01&#39;,
+     &#39;2019_04_01&#39;,
+     &#39;2019_05_01&#39;,
+     &#39;2019_06_01&#39;,
+     &#39;2019_07_01&#39;,
+     &#39;2019_08_01&#39;,
+     &#39;2019_09_01&#39;,
+     &#39;2019_10_01&#39;,
+     &#39;2019_11_01&#39;,
+     &#39;2019_12_01&#39;,
+     &#39;2020_01_01&#39;,
+     &#39;2020_02_01&#39;,
+     &#39;2020_03_01&#39;,
+     &#39;2020_04_01&#39;,
+     &#39;2020_05_01&#39;,
+     &#39;2020_06_01&#39;,
+     &#39;2020_07_01&#39;,
+     &#39;2020_08_01&#39;,
+     &#39;2020_09_01&#39;,
+     &#39;2020_10_01&#39;,
+     &#39;2020_11_01&#39;,
+     &#39;2020_12_01&#39;,
+     &#39;2021_01_01&#39;,
+     &#39;2021_02_01&#39;,
+     &#39;2021_03_01&#39;,
+     &#39;2021_04_01&#39;,
+     &#39;2021_05_01&#39;,
+     &#39;2021_06_01&#39;,
+     &#39;2021_07_01&#39;,
+     &#39;2021_08_01&#39;,
+     &#39;2021_09_01&#39;,
+     &#39;2021_10_01&#39;,
+     &#39;2021_11_01&#39;,
+     &#39;2021_12_01&#39;,
+
+ ]
+    
+    KPI_COLUMNS = [&#39;id&#39;,
+     &#39;load_id&#39;,
+     &#39;kpi_id&#39;,
+     &#39;initiative_id&#39;,
+     &#39;initiative_name&#39;,
+     &#39;measure&#39;,
+     &#39;unit&#39;,
+     &#39;purpose&#39;,
+     &#39;2017_10_01&#39;,
+     &#39;2017_11_01&#39;,
+     &#39;2017_12_01&#39;,
+     &#39;2018_01_01&#39;,
+     &#39;2018_02_01&#39;,
+     &#39;2018_03_01&#39;,
+     &#39;2018_04_01&#39;,
+     &#39;2018_05_01&#39;,
+     &#39;2018_06_01&#39;,
+     &#39;2018_07_01&#39;,
+     &#39;2018_08_01&#39;,
+     &#39;2018_09_01&#39;,
+     &#39;2018_10_01&#39;,
+     &#39;2018_11_01&#39;,
+     &#39;2018_12_01&#39;,
+     &#39;2019_01_01&#39;,
+     &#39;2019_02_01&#39;,
+     &#39;2019_03_01&#39;,
+     &#39;2019_04_01&#39;,
+     &#39;2019_05_01&#39;,
+     &#39;2019_06_01&#39;,
+     &#39;2019_07_01&#39;,
+     &#39;2019_08_01&#39;,
+     &#39;2019_09_01&#39;,
+     &#39;2019_10_01&#39;,
+     &#39;2019_11_01&#39;,
+     &#39;2019_12_01&#39;,
+     &#39;2020_01_01&#39;,
+     &#39;2020_02_01&#39;,
+     &#39;2020_03_01&#39;,
+     &#39;2020_04_01&#39;,
+     &#39;2020_05_01&#39;,
+     &#39;2020_06_01&#39;,
+     &#39;2020_07_01&#39;,
+     &#39;2020_08_01&#39;,
+     &#39;2020_09_01&#39;,
+     &#39;2020_10_01&#39;,
+     &#39;2020_11_01&#39;,
+     &#39;2020_12_01&#39;,
+     &#39;2021_01_01&#39;,
+     &#39;2021_02_01&#39;,
+     &#39;2021_03_01&#39;,
+     &#39;2021_04_01&#39;,
+     &#39;2021_05_01&#39;,
+     &#39;2021_06_01&#39;,
+     &#39;2021_07_01&#39;,
+     &#39;2021_08_01&#39;,
+     &#39;2021_09_01&#39;,
+     &#39;2021_10_01&#39;,
+     &#39;2021_11_01&#39;,
+     &#39;2021_12_01&#39;,
+
+  ]
+    return INITIATIVE_COLUMNS,MILESTONES_COLUMNS,IMPACTS_COLUMNS,KPI_COLUMNS
+
+
+def filter_load_id(data,lid):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    data : DataFrame
+        Table containing Load_id as a column
+    lid : int
+        Load id
+    
+    Returns
+    ----------
+    new_data: DataFrame
+        Subset of table with the specific input load id
+    &#34;&#34;&#34;
+    new_data=data.copy()
+    new_data=new_data[new_data.load_id==lid]
+
+    return new_data
+
+
+def loading_table(table_name,connection):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    table_name : str
+        Name of the table which needs to be loaded
+    connection : object
+        Which sqlalchamy object to be used to extract the table
+    
+    Returns
+    ----------
+    table: DataFrame
+        Extracted the table with table_name(given as input) from the specific database
+        
+    &#34;&#34;&#34;
+    print(&#39;{} {}&#39;.format(&#34;SELECT * FROM&#34;, table_name))
+    table=pd.read_sql(&#39;{} {}&#39;.format(&#34;SELECT * FROM&#34;, table_name),con=connection)
+    table=filter_load_id(table,table.load_id.max())
+    return table
+
+
+def filter_category(imp,filter_string):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    imp : DataFrame
+        Table to filter categories in
+    filter_string : str
+        String to compare category with 
+    
+    Returns
+    ----------
+    out: DataFrame
+        Segmented Data Frame for each category for filter string
+    &#34;&#34;&#34;
+    
+    data=imp.copy()
+    out=data[data.metric_metric_category==filter_string]
+    return out
+
+  
+def loading_tables(stage):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    stage : object
+        Data Base object
+
+    
+    Returns
+    ----------
+    impacts: DataFrame
+        Impacts Table
+    kpi: DataFrame
+        KPI Table
+    milestones: DataFrame
+        Milestones Table
+    initiatives: DataFrame
+        Initiatives Table
+    &#34;&#34;&#34;
+    
+    print(&#39;Loading Tables&#39;)
+    impacts=loading_table(&#39;impacts&#39;,stage)
+    kpi=loading_table(&#39;kpidetails&#39;,stage)
+    milestones=loading_table(&#39;milestones&#39;,stage)
+    initiatives=loading_table(&#39;initiatives&#39;,stage)
+    
+    return impacts,kpi,milestones,initiatives
+
+def change_the_impact_status (impacts):
+    &#34;&#34;&#34;
+    This function changes the &#34;Impact Status&#34; column if: 
+        * &#39;P&amp;L effective savings&#39; = &#34;P&amp;L&#34;
+        * &#39;Implemented savings&#39; = &#39;Implemented&#39;
+    Also the column name &#34;Impact Status&#34; is changed to &#34;saving_type&#34;
+    
+    Parameters
+    ----------
+    impacts : DataFrame
+        Table ( by default needs to be the impacts table)
+
+    Returns
+    ----------
+    impacts: DataFrame
+        Changed input table
+    &#34;&#34;&#34;
+    impacts.loc[impacts[&#39;Impact status&#39;]==&#39;P&amp;L effective savings&#39;,&#39;Impact status&#39;]=&#34;P&amp;L&#34;
+    impacts.loc[impacts[&#39;Impact status&#39;]==&#39;Implemented savings&#39;,&#39;Impact status&#39;]=&#34;Implemented&#34;
+    impacts.rename(columns={&#39;Impact status&#39;:&#39;savings_type&#39;},inplace=True)
+    return impacts
+
+
+def check_new_table_loaded(engine,initiatives):
+    
+    &#34;&#34;&#34;
+    Check if new table is uploaded
+        - or else we will have multiple instances with the same data and reports will ne wrong
+    Parameters
+    ----------
+    engine : object
+        Object for the layer in the DB
+    initiatives : Data Frame 
+        Initiatives Table
+    
+    Raises:
+    ----------
+    Value Error (&#34;Before running the code, please upload new data with WAVE Import Tool&#34;)
+    &#34;&#34;&#34;
+    initiatives_integ=loading_table(&#39;initiatives&#39;,engine)
+    
+    if initiatives_integ.load_id.max()==initiatives.load_id.max():
+        raise ValueError(&#34;Before running the code, please upload new data with WAVE Import Tool&#34;)
+
+ 
+def pre_process_impact_columns(impacts):
+    &#34;&#34;&#34;
+    we are spliting the table according to the dabase documentation
+    &#39;id&#39;, &#39;load_id&#39;, &#39;initiative_id&#39;, &#39;impact_id&#39; is the 
+    key making date colums as one column with date values
+    
+    Parameters
+    ----------
+    impacts : DataFrame
+        Table containing Impacts data
+
+    Returns
+    ----------
+    impacts: DataFrame
+    &#34;&#34;&#34;
+    imp_cols=impacts.columns.tolist()
+    imp_cols=[s.replace(&#39; &#39;,&#39;_&#39;) for s in imp_cols]
+    imp_cols=[s.replace(&#39;_&gt;&#39;,&#39;&#39;) for s in imp_cols]
+    imp_cols=[s.replace(&#39;-&#39;,&#39;_&#39;) for s in imp_cols]
+    imp_cols=[s.lower() for s in imp_cols]
+    impacts.columns=imp_cols
+    return impacts
+
+
+def subsetting_impacts(impacts):
+    &#34;&#34;&#34;
+    for all the initiatives that are in L1 or L2, if they have a positive run rate value, but all
+    of the monthly values (i.e. Jan 2018 - Dec 2021) are zero, the last monthly value (Dec 2021) 
+    should be overwritten with the run rate value.
+    If the initiative is in stage L1, all of the Forecast values are to be overwritten with Plan values.
+    
+    If the initiative is in stage L1, all of the Forecast values are to be overwritten with Plan values.
+        Impacts temp 2 is the table where: 
+        1. stage  = L1 and stage  = Submitted for L2 approval
+        2. purpose = Plan 
+        3. make the id and add 2 to all of the rows. 
+  
+    Impacts temp 2 is the table where: 
+        1. stage  != L1 and stage  != Submitted for L2 approval
+        2. purpose != &#39;Forecast&#39;
+        3. add impacts 2 to impact 3 
+    
+
+    Parameters
+    ----------
+    impacts : DataFrame
+        Table containing impacts data
+
+    Returns
+    ----------
+    impacts: DataFrame
+    &#34;&#34;&#34;
+    
+    impacts_temp = impacts.copy()
+    # make a checksum for all of the dates 
+    impacts_temp[&#39;checksum&#39;] = impacts_temp.iloc[:, -51:].sum(axis = 1)
+    conditions = [
+        (((impacts_temp[&#39;stage&#39;] == &#39;L1&#39;) |
+                (impacts_temp[&#39;stage&#39;] == &#39;L2&#39;) |
+                (impacts_temp[&#39;stage&#39;] == &#39;Submitted for L2 approval&#39;)|
+                (impacts_temp[&#39;stage&#39;] == &#39;Submitted for L3 approval&#39;)) 
+         &amp; (impacts_temp[&#39;run_rate&#39;] &gt; 0) &amp; (impacts_temp[&#39;checksum&#39;] == 0))
+    ]
+    choices = [impacts_temp[&#39;run_rate&#39;]]
+    
+    impacts_temp[&#39;2021_12_01&#39;] = np.select(conditions, choices, default = impacts_temp[&#39;2021_12_01&#39;])
+    
+    # DELETE Checksum 
+    impacts = impacts_temp.drop([&#39;checksum&#39;], axis = 1)
+    
+    impacts_temp2 = impacts.copy()
+    
+    impacts_temp2 = impacts_temp2[(impacts_temp[&#39;stage&#39;] == &#39;L1&#39;) | (impacts_temp[&#39;stage&#39;] == &#39;Submitted for L2 approval&#39;)]
+    impacts_temp2 = impacts_temp2[impacts_temp2[&#39;purpose&#39;] == &#39;Plan&#39;]
+    
+    impacts_temp2[&#39;purpose&#39;] = impacts_temp2[&#39;purpose&#39;].str.replace(&#39;Plan&#39;, &#39;Forecast&#39;)
+    impacts_temp2[&#39;id&#39;] = impacts_temp2[&#39;id&#39;]+2
+    
+    
+    impacts_temp3 = impacts.copy()
+    impacts_temp3 = impacts_temp3[((impacts_temp3[&#39;stage&#39;] != &#39;L1&#39;) &amp; (impacts_temp3[&#39;stage&#39;] != &#39;Submitted for L2 approval&#39;)) | (impacts_temp3[&#39;purpose&#39;] != &#39;Forecast&#39;)]
+    
+    impacts_temp4 = impacts_temp2.append(impacts_temp3)
+    
+    impacts = impacts_temp4.copy()
+    
+    return impacts
+
+
+
+def create_impact_description_and_store(impacts,new_integration):
+    
+    &#34;&#34;&#34;
+    Create impact description table and store it in the database
+    Parameters
+    ----------
+    impacts : DataFrame
+        Table containing impacts Data 
+    new_integration : object
+        Connection to DB
+    
+    Returns
+    ----------
+    impacts_description: DataFrame
+    &#34;&#34;&#34;
+    
+    impacts_description=impacts[[&#39;id&#39;, &#39;load_id&#39;, &#39;initiative_id&#39;, &#39;impact_id&#39;, &#39;workstream&#39;, 
+                         &#39;impact_geography_country&#39;, &#39;metric_metric_category&#39;,
+                          &#39;metric_metric&#39;, &#39;allocation_area_workstream&#39;,
+                         &#39;allocation_area_sub_workstream&#39;, &#39;run_rate&#39;,&#34;savings_type&#34;]]
+    
+    
+    impacts_description.to_sql(name=&#39;impacts&#39;,con=new_integration,index=False,if_exists=&#39;append&#39;)
+    print(&#39;input description stored&#39;)
+    return impacts_description
+
+def create_and_store_impact_value(impacts,new_integration):
+    
+    &#34;&#34;&#34;
+    Create and Store impact values. 
+    Forecasts are now overwritten with Plans.
+    Parameters
+    ----------
+    impacts : DataFrame
+        Table containing impacts data 
+    new_integration : object
+        Connection to DB
+    
+    Returns
+    ----------
+    impacts_value: DataFrame
+    &#34;&#34;&#34;
+    impacts_value=impacts[[&#39;id&#39;, &#39;load_id&#39;, &#39;impact_id&#39;,&#39;purpose&#39;,&#34;savings_type&#34;, &#39;2017_10_01&#39;,
+           &#39;2017_11_01&#39;, &#39;2017_12_01&#39;, &#39;2018_01_01&#39;, &#39;2018_02_01&#39;, &#39;2018_03_01&#39;,
+           &#39;2018_04_01&#39;, &#39;2018_05_01&#39;, &#39;2018_06_01&#39;, &#39;2018_07_01&#39;, &#39;2018_08_01&#39;,
+           &#39;2018_09_01&#39;, &#39;2018_10_01&#39;, &#39;2018_11_01&#39;, &#39;2018_12_01&#39;, &#39;2019_01_01&#39;,
+           &#39;2019_02_01&#39;, &#39;2019_03_01&#39;, &#39;2019_04_01&#39;, &#39;2019_05_01&#39;, &#39;2019_06_01&#39;,
+           &#39;2019_07_01&#39;, &#39;2019_08_01&#39;, &#39;2019_09_01&#39;, &#39;2019_10_01&#39;, &#39;2019_11_01&#39;,
+           &#39;2019_12_01&#39;, &#39;2020_01_01&#39;, &#39;2020_02_01&#39;, &#39;2020_03_01&#39;, &#39;2020_04_01&#39;,
+           &#39;2020_05_01&#39;, &#39;2020_06_01&#39;, &#39;2020_07_01&#39;, &#39;2020_08_01&#39;, &#39;2020_09_01&#39;,
+           &#39;2020_10_01&#39;, &#39;2020_11_01&#39;, &#39;2020_12_01&#39;, &#39;2021_01_01&#39;, &#39;2021_02_01&#39;,
+           &#39;2021_03_01&#39;, &#39;2021_04_01&#39;, &#39;2021_05_01&#39;, &#39;2021_06_01&#39;, &#39;2021_07_01&#39;,
+           &#39;2021_08_01&#39;, &#39;2021_09_01&#39;, &#39;2021_10_01&#39;, &#39;2021_11_01&#39;, &#39;2021_12_01&#39;]]
+    
+    
+    ids=[&#39;id&#39;, &#39;load_id&#39;, &#39;impact_id&#39;,&#39;savings_type&#39;,&#39;purpose&#39;]
+    val=[&#39;2017_10_01&#39;,
+           &#39;2017_11_01&#39;, &#39;2017_12_01&#39;, &#39;2018_01_01&#39;, &#39;2018_02_01&#39;, &#39;2018_03_01&#39;,
+           &#39;2018_04_01&#39;, &#39;2018_05_01&#39;, &#39;2018_06_01&#39;, &#39;2018_07_01&#39;, &#39;2018_08_01&#39;,
+           &#39;2018_09_01&#39;, &#39;2018_10_01&#39;, &#39;2018_11_01&#39;, &#39;2018_12_01&#39;, &#39;2019_01_01&#39;,
+           &#39;2019_02_01&#39;, &#39;2019_03_01&#39;, &#39;2019_04_01&#39;, &#39;2019_05_01&#39;, &#39;2019_06_01&#39;,
+           &#39;2019_07_01&#39;, &#39;2019_08_01&#39;, &#39;2019_09_01&#39;, &#39;2019_10_01&#39;, &#39;2019_11_01&#39;,
+           &#39;2019_12_01&#39;, &#39;2020_01_01&#39;, &#39;2020_02_01&#39;, &#39;2020_03_01&#39;, &#39;2020_04_01&#39;,
+           &#39;2020_05_01&#39;, &#39;2020_06_01&#39;, &#39;2020_07_01&#39;, &#39;2020_08_01&#39;, &#39;2020_09_01&#39;,
+           &#39;2020_10_01&#39;, &#39;2020_11_01&#39;, &#39;2020_12_01&#39;, &#39;2021_01_01&#39;, &#39;2021_02_01&#39;,
+           &#39;2021_03_01&#39;, &#39;2021_04_01&#39;, &#39;2021_05_01&#39;, &#39;2021_06_01&#39;, &#39;2021_07_01&#39;,
+           &#39;2021_08_01&#39;, &#39;2021_09_01&#39;, &#39;2021_10_01&#39;, &#39;2021_11_01&#39;, &#39;2021_12_01&#39;]
+    
+    
+    impacts_value=pd.melt(impacts_value, id_vars=ids, value_vars=val,var_name=&#39;date&#39;,value_name=&#39;impact_value&#39;)
+    
+    impacts_value[&#39;date&#39;]=pd.to_datetime(impacts_value.date,format=&#39;%Y_%m_%d&#39;).dt.date  
+    
+    
+    impacts_value.to_sql(name=&#39;impacts_value&#39;,con=new_integration,index=False,if_exists=&#39;append&#39;)
+    
+    print(&#39;impact_value stored in the database&#39;)
+    return impacts_value
+
+def create_and_store_kpi_descriptions(kpi,new_integration):
+    &#34;&#34;&#34;
+    Create and store KPI description 
+    Parameters
+    ----------
+    kpi : DataFrame
+        Table containing KPI data
+    new_integration : object
+        
+        Connection to the DB    
+    Returns
+    ----------
+    None : 
+    print(&#39;KPI_descrition stored in the database&#39;)
+    &#34;&#34;&#34;
+    
+    kpi_description=kpi[[&#39;id&#39;, &#39;load_id&#39;, &#39;initiative_id&#39;, &#39;kpi_id&#39;, &#39;measure&#39;, &#39;unit&#39;]]
+    kpi_description.to_sql(name=&#39;kpi&#39;,con=new_integration,index=False,if_exists=&#39;append&#39;)
+    return print(&#39;KPI_descrition stored in the database&#39;)
+    
+def create_and_store_kpi_value(kpi,new_integration):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    kpi : DataFrame
+        Table containing Load_id as a column
+    new_integration : Object
+        Connection to the DB 
+    
+    Returns
+    ----------
+    None
+    &#34;&#34;&#34;
+    
+    kpi_value=kpi[[&#39;id&#39;, &#39;load_id&#39;, &#39;kpi_id&#39;,&#39;purpose&#39;, &#39;2017_10_01&#39;,
+           &#39;2017_11_01&#39;, &#39;2017_12_01&#39;, &#39;2018_01_01&#39;, &#39;2018_02_01&#39;, &#39;2018_03_01&#39;,
+           &#39;2018_04_01&#39;, &#39;2018_05_01&#39;, &#39;2018_06_01&#39;, &#39;2018_07_01&#39;, &#39;2018_08_01&#39;,
+           &#39;2018_09_01&#39;, &#39;2018_10_01&#39;, &#39;2018_11_01&#39;, &#39;2018_12_01&#39;, &#39;2019_01_01&#39;,
+           &#39;2019_02_01&#39;, &#39;2019_03_01&#39;, &#39;2019_04_01&#39;, &#39;2019_05_01&#39;, &#39;2019_06_01&#39;,
+           &#39;2019_07_01&#39;, &#39;2019_08_01&#39;, &#39;2019_09_01&#39;, &#39;2019_10_01&#39;, &#39;2019_11_01&#39;,
+           &#39;2019_12_01&#39;, &#39;2020_01_01&#39;, &#39;2020_02_01&#39;, &#39;2020_03_01&#39;, &#39;2020_04_01&#39;,
+           &#39;2020_05_01&#39;, &#39;2020_06_01&#39;, &#39;2020_07_01&#39;, &#39;2020_08_01&#39;, &#39;2020_09_01&#39;,
+           &#39;2020_10_01&#39;, &#39;2020_11_01&#39;, &#39;2020_12_01&#39;, &#39;2021_01_01&#39;, &#39;2021_02_01&#39;,
+           &#39;2021_03_01&#39;, &#39;2021_04_01&#39;, &#39;2021_05_01&#39;, &#39;2021_06_01&#39;, &#39;2021_07_01&#39;,
+           &#39;2021_08_01&#39;, &#39;2021_09_01&#39;, &#39;2021_10_01&#39;, &#39;2021_11_01&#39;, &#39;2021_12_01&#39;]]
+    
+    ids=[&#39;id&#39;, &#39;load_id&#39;, &#39;kpi_id&#39;,&#39;purpose&#39;]
+    val=[&#39;2017_10_01&#39;,
+           &#39;2017_11_01&#39;, &#39;2017_12_01&#39;, &#39;2018_01_01&#39;, &#39;2018_02_01&#39;, &#39;2018_03_01&#39;,
+           &#39;2018_04_01&#39;, &#39;2018_05_01&#39;, &#39;2018_06_01&#39;, &#39;2018_07_01&#39;, &#39;2018_08_01&#39;,
+           &#39;2018_09_01&#39;, &#39;2018_10_01&#39;, &#39;2018_11_01&#39;, &#39;2018_12_01&#39;, &#39;2019_01_01&#39;,
+           &#39;2019_02_01&#39;, &#39;2019_03_01&#39;, &#39;2019_04_01&#39;, &#39;2019_05_01&#39;, &#39;2019_06_01&#39;,
+           &#39;2019_07_01&#39;, &#39;2019_08_01&#39;, &#39;2019_09_01&#39;, &#39;2019_10_01&#39;, &#39;2019_11_01&#39;,
+           &#39;2019_12_01&#39;, &#39;2020_01_01&#39;, &#39;2020_02_01&#39;, &#39;2020_03_01&#39;, &#39;2020_04_01&#39;,
+           &#39;2020_05_01&#39;, &#39;2020_06_01&#39;, &#39;2020_07_01&#39;, &#39;2020_08_01&#39;, &#39;2020_09_01&#39;,
+           &#39;2020_10_01&#39;, &#39;2020_11_01&#39;, &#39;2020_12_01&#39;, &#39;2021_01_01&#39;, &#39;2021_02_01&#39;,
+           &#39;2021_03_01&#39;, &#39;2021_04_01&#39;, &#39;2021_05_01&#39;, &#39;2021_06_01&#39;, &#39;2021_07_01&#39;,
+           &#39;2021_08_01&#39;, &#39;2021_09_01&#39;, &#39;2021_10_01&#39;, &#39;2021_11_01&#39;, &#39;2021_12_01&#39;]
+    
+    
+    kpi_value=pd.melt(kpi_value, id_vars=ids, value_vars=val,var_name=&#39;date&#39;,value_name=&#39;kpi_value&#39;)
+    kpi_value[&#39;date&#39;]=pd.to_datetime(kpi_value.date,format=&#39;%Y_%m_%d&#39;).dt.date
+    
+    kpi_value.to_sql(name=&#39;kpi_value&#39;,con=new_integration,index=False,if_exists=&#39;append&#39;)
+    return print(&#39;kpi_value stored in the database&#39;)
+
+
+def processing_and_storing_milestones(milestones,new_integration):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    milestones : DataFrame
+        Table containing Milestones Data
+    new_integration : Object
+        Connection to the DB
+    
+    Returns
+    ----------
+    None
+    &#34;&#34;&#34;
+    
+    milestones=milestones.drop(columns=[&#39;initiative_name&#39;])
+    milestones.to_sql(name=&#39;milestones&#39;,con=new_integration,index=False,if_exists=&#39;append&#39;)
+    return print(&#39;milestones stored in the database&#39;)
+
+def processing_and_storing_initiatives(initiatives,new_integration):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    initiatives : DataFrame
+        Table containing initiatives Data
+    new_integration : Object
+        Connection to the DB
+    
+    Returns
+    ----------
+    initiatives : Data Frane 
+    &#34;&#34;&#34;
+    
+    init_cols=initiatives.columns.tolist()
+    init_cols=[s.replace(&#39;_-&#39;,&#39;&#39;) for s in init_cols]
+    init_cols=[s.replace(&#39;-&#39;,&#39;_&#39;) for s in init_cols]
+    initiatives.columns=init_cols
+    #Store it in the database 
+    initiatives.to_sql(name=&#39;initiatives&#39;,con=new_integration,index=False,if_exists=&#39;append&#39;)
+    print(&#39;initiatives stored in the database&#39;)
+    return initiatives
+
+
+def transforming_initiatives(initiatives,
+                             impacts_description,
+                             impacts_value,
+                             impacts):
+    &#34;&#34;&#34;
+    Transforming the initiatives and saving the history
+    - we want to transform the data so that for every initiative,impact,purpose and saving type we have new calculation of impact values
+    - for the P&amp;L new value is the sum of the last 12 months and for Implemented is cumulative sum
+    - we do the calculatons for every month beacause we need that for the reports
+
+    
+    Parameters
+    ----------
+    initiatives : DataFrame
+        Table containing initiative data
+    impacts_description : DataFrame
+        Table containing impacts_description data
+    impacts_value: DataFrame
+        Table containing impact_value data
+    impacts: DataFrame
+        Table containing impacts data
+        
+    Returns
+    ----------
+    impacts_with_new: DataFrame
+        Table containing impact_value data
+    impacts: DataFrame
+        Table containing impacts data
+    &#34;&#34;&#34;    
+    initiatives=initiatives[[&#39;load_id&#39;,&#39;initiative_id&#39;,&#39;stage&#39;,&#39;weekly_status&#39;,&#39;report&#39;]]
+
+    impacts=impacts_description.merge(impacts_value,how=&#39;inner&#39;,on=[&#39;id&#39;, &#39;load_id&#39;, &#39;impact_id&#39;,&#39;savings_type&#39;])
+    impacts=impacts.merge(initiatives,how=&#39;left&#39;,on=[&#39;load_id&#39;,&#39;initiative_id&#39;])
+    impacts.rename(columns={&#39;impact_value&#39;:&#39;wave_value&#39;},inplace=True)
+    
+    impacts_with_new = impacts
+    impacts_with_new.loc[impacts_with_new.wave_value.isna(),&#39;wave_value&#39;]=0
+    
+    return impacts_with_new,impacts
+
+
+def create_value_type_columns(df,flag):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    data : DataFrame
+        Table containing Load_id as a column
+    lid : int
+        Load id
+    
+    Returns
+    ----------
+    new_data: DataFrame
+    &#34;&#34;&#34;    
+    &#39;&#39;&#39;
+    flag = 0 pl_act
+    glag = 1  pl_pln
+    flag = 2 pl_frc
+    &#39;&#39;&#39;
+    
+    for i in range(11):
+        df.loc[:,&#39;shift_{}&#39;.format(i+1)]=df.groupby([&#39;initiative_id&#39;,&#39;impact_id&#39;,&#39;purpose&#39;,&#39;savings_type&#39;]).wave_value.shift(periods=i+1)
+        df.loc[df[&#39;shift_{}&#39;.format(i+1)].isna(),&#39;shift_{}&#39;.format(i+1)]=0
+    shift_columns=[&#39;wave_value&#39;,&#39;shift_1&#39;, &#39;shift_2&#39;, &#39;shift_3&#39;, &#39;shift_4&#39;,
+    &#39;shift_5&#39;, &#39;shift_6&#39;, &#39;shift_7&#39;, &#39;shift_8&#39;, 
+    &#39;shift_9&#39;, &#39;shift_10&#39;, &#39;shift_11&#39;]
+    if flag == 0:
+        df[&#39;dfual_value&#39;]=df[shift_columns].sum(axis=1)
+        df[&#39;pl_plan_value&#39;] = 0
+        df[&#39;pl_forecast_value&#39;] = 0
+        
+    if flag == 1:
+        df[&#39;dfual_value&#39;] = 0
+        df[&#39;pl_plan_value&#39;]=df[shift_columns].sum(axis=1)
+        df[&#39;pl_forecast_value&#39;] = 0
+    else:
+        df[&#39;dfual_value&#39;] = 0
+        df[&#39;pl_plan_value&#39;]= 0
+        df[&#39;pl_forecast_value&#39;] = df[shift_columns].sum(axis=1)
+        
+    shift_columns.remove(&#39;wave_value&#39;)
+    df.drop(columns=shift_columns,inplace=True)
+    df[&#39;value_type&#39;]=&#39;12_months_sum&#39; 
+    return df 
+
+def transofmring_impact_saving_implemented(impacts_with_new,impacts):
+    &#34;&#34;&#34;
+    Transforming impacts
+    - we create new column value where we save the calulations and
+     make column value_type to know what calculation we did
+    
+    Parameters
+    ----------
+    data : DataFrame
+        Table containing Load_id as a column
+    lid : int
+        Load id
+    
+    Returns
+    ----------
+    new_data: DataFrame
+    &#34;&#34;&#34; 
+     
+
+
+    
+
+    actual = impacts_with_new[(impacts_with_new.purpose == &#39;Actual&#39;)]
+    forcast = impacts_with_new[(impacts_with_new.purpose == &#39;Forecast&#39;)]
+    
+    actual_forcast = actual.merge(forcast[[&#39;initiative_id&#39;,&#39;impact_id&#39;,&#39;savings_type&#39;,&#39;date&#39;,&#39;wave_value&#39;]],on = [&#39;initiative_id&#39;,&#39;impact_id&#39;,&#39;savings_type&#39;,&#39;date&#39;])
+    actual_forcast[&#39;wave_value&#39;] =actual_forcast.apply(lambda row: row[&#39;wave_value_x&#39;] if row[&#39;wave_value_x&#39;] &gt;0 else row[&#39;wave_value_y&#39;] , axis = 1)
+    actual_forcast[&#39;purpose&#39;] =&#39;Actuals &amp; Forecast&#39;
+    actual_forcast.drop([&#39;wave_value_x&#39;,&#39;wave_value_y&#39;],axis =1,inplace = True )
+    
+    plan = impacts_with_new[(impacts_with_new.purpose == &#39;Plan&#39;) ]
+    impacts_with_new = pd.concat([plan,actual_forcast],ignore_index = True)
+
+    impacts_with_new_selected=impacts_with_new[[&#39;initiative_id&#39;,
+                                                &#39;impact_id&#39;,
+                                                &#39;purpose&#39;,
+                                                &#39;savings_type&#39;,
+                                                &#39;date&#39;,
+                                                &#39;wave_value&#39;,
+                                                &#39;report&#39;]]
+
+    saving = &#39;Implemented&#39;
+    imp=impacts_with_new_selected.query(&#39;savings_type==@saving&#39;) #.copy()
+
+    imp_pln = imp.loc[(imp.purpose==&#39;Plan&#39;),]
+    imp_frc = imp.loc[(imp.purpose==&#39;Actuals &amp; Forecast&#39;),]
+
+    imp.loc[:,&#39;impact_plan_value&#39;]=imp_pln.groupby([&#39;initiative_id&#39;,&#39;impact_id&#39;,&#39;purpose&#39;,&#39;savings_type&#39;]).wave_value.cumsum()
+    imp.loc[:,&#39;impact_forecast_value&#39;]=imp_frc.groupby([&#39;initiative_id&#39;,&#39;impact_id&#39;,&#39;purpose&#39;,&#39;savings_type&#39;]).wave_value.cumsum()
+
+
+    imp.loc[:,&#39;pl_plan_value&#39;] = 0
+    imp.loc[:,&#39;pl_forecast_value&#39;] = 0
+    
+    imp[&#39;value_type&#39;] = &#39;running_total&#39;
+    
+    imp[&#39;impact_plan_value&#39;].fillna(0, inplace=True)
+    imp[&#39;impact_forecast_value&#39;].fillna(0, inplace=True)
+    
+    
+    saving=&#39;P&amp;L&#39;
+#    impacts.loc[impacts.wave_value.isna(),&#39;wave_value&#39;]=0
+    pl_act = impacts_with_new_selected.query(&#39;savings_type==@saving&#39;)
+    pl_act = pl_act.loc[(pl_act.purpose==&#39;Actuals &amp; Forecast&#39;),]
+    
+    pl_act[&#39;impact_plan_value&#39;] = 0
+    pl_act[&#39;impact_forecast_value&#39;] = 0
+
+    pl_act = create_value_type_columns(pl_act,flag = 0)
+
+    pl_pln = impacts_with_new_selected.query(&#39;savings_type==@saving&#39;)
+    pl_pln = pl_pln.loc[(pl_pln.purpose==&#39;Plan&#39;),]
+    
+    pl_pln[&#39;impact_plan_value&#39;] = 0
+    pl_pln[&#39;impact_forecast_value&#39;] = 0
+     
+    
+    pl_pln = create_value_type_columns(pl_pln,flag = 1)
+    
+   
+    
+    pl = pl_act.append(pl_pln)
+    
+    impacts_all=pl.append(imp,ignore_index=True)
+    
+    impacts_out=impacts_with_new.merge(impacts_all,how=&#39;left&#39;,on=[&#39;initiative_id&#39;,&#39;impact_id&#39;,\
+                                                        &#39;purpose&#39;,&#39;savings_type&#39;, &#39;wave_value&#39;, &#39;date&#39;,&#39;report&#39;])
+    
+    
+       
+    return impacts_out 
+    
+    
+    
+def creating_impact_simple(impacts_out):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    data : DataFrame
+        Table containing Load_id as a column
+    lid : int
+        Load id
+    
+    Returns
+    ----------
+    new_data: DataFrame
+    &#34;&#34;&#34; 
+    
+    impacts_simple = impacts_out.copy()
+    impacts_simple[&#39;value&#39;] = impacts_simple[&#39;impact_plan_value&#39;] + impacts_simple[&#39;impact_forecast_value&#39;] +impacts_simple[&#39;pl_plan_value&#39;] + impacts_simple[&#39;pl_forecast_value&#39;]
+
+    col = [&#39;id&#39;, &#39;load_id&#39;, &#39;initiative_id&#39;, &#39;impact_id&#39;, &#39;workstream&#39;, &#39;impact_geography_country&#39;,
+               &#39;metric_metric_category&#39;, &#39;metric_metric&#39;, &#39;allocation_area_workstream&#39;, &#39;allocation_area_sub_workstream&#39;,
+              &#39;run_rate&#39;, &#39;savings_type&#39;, &#39;purpose&#39;, &#39;date&#39;, &#39;stage&#39;, &#39;weekly_status&#39;, &#39;wave_value&#39;, &#39;value&#39;, &#39;value_type&#39;,&#39;report&#39;]
+
+    impacts_simple = impacts_simple[col]
+
+    conditions = [
+        (impacts_simple[&#39;workstream&#39;] == &#39;G%26A&#39;),
+        (impacts_simple[&#39;workstream&#39;] == &#39;R%26D&#39;)
+    ]
+
+    choices = [&#39;G&amp;A&#39;, &#39;R&amp;D&#39;]
+
+    impacts_simple[&#39;workstream&#39;] = np.select(conditions, choices, default = impacts_simple[&#39;workstream&#39;])
+
+    conditions = [
+        (impacts_simple[&#39;allocation_area_workstream&#39;] == &#39;G%26A&#39;),
+        (impacts_simple[&#39;allocation_area_workstream&#39;] == &#39;R%26D&#39;)
+    ]
+
+    choices = [&#39;G&amp;A&#39;, &#39;R&amp;D&#39;]
+    
+    impacts_simple[&#39;allocation_area_workstream&#39;] = np.select(conditions, choices, default = impacts_simple[&#39;allocation_area_workstream&#39;])
+    
+    return impacts_simple
+
+
+def closing_sessions(session):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    data : DataFrame
+        Table containing Load_id as a column
+    lid : int
+        Load id
+    
+    Returns
+    ----------
+    new_data: DataFrame
+    &#34;&#34;&#34; 
+    
+    session.close()
+    print(str(session) + &#39;IS CLOSED!&#39;)
+    
+
+def read_xlsx_files(filename):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    data : DataFrame
+        Table containing Load_id as a column
+    lid : int
+        Load id
+    
+    Returns
+    ----------
+    new_data: DataFrame
+    &#34;&#34;&#34; 
+    Initiatives_input = pd.read_excel(filename, &#39;Initiatives&#39;,skiprows=3)
+    Milestones_input = pd.read_excel(filename, &#39;Milestones&#39;,skiprows=3)
+    Impacts_input = pd.read_excel(filename, &#39;Impacts&#39;,skiprows=3)
+    KPI_input = pd.read_excel(filename, &#39;KPI Details&#39;,skiprows=3)
+    return Initiatives_input,Milestones_input,Impacts_input,KPI_input
+
+def take_maximum_load_index(table,con):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    data : DataFrame
+        Table containing Load_id as a column
+    lid : int
+        Load id
+    
+    Returns
+    ----------
+    new_data: DataFrame
+    &#34;&#34;&#34; 
+    table_load_id=pd.read_sql(&#39;{} {}&#39;.format(&#34;SELECT max(load_id) FROM&#34;, table),con)
+
+    table_id=pd.read_sql(&#39;{} {}&#39;.format(&#34;SELECT max(id) FROM&#34;, table),con)
+    return table_load_id.iloc[0,0],table_id.iloc[0,0]
+
+def create_load_index(table,max_index,max_id):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    data : DataFrame
+        Table containing Load_id as a column
+    lid : int
+        Load id
+    
+    Returns
+    ----------
+    new_data: DataFrame
+    &#34;&#34;&#34; 
+    cols = list(table.columns)
+    table[&#39;load_id&#39;] = max_index + 1 
+    table[&#39;id&#39;] = list(range(1,table.shape[0]+1))
+    table = table[[&#39;id&#39;,&#39;load_id&#39;] +cols]
+
+    return table 
+
+
+def create_new_columns_and_impace_2(impacts_simple):
+    &#34;&#34;&#34;
+    This function is dealing with creating new columns CTO_stage and CTO_values for the inport data &#34;impacts_simple&#34;. 
+    The function is split in couple of parts: 
+        1.1 The impact simple table is grouped by the following columns: &#39;load_id&#39;, &#39;initiative_id&#39;,  &#39;workstream&#39;,
+          &#39;impact_geography_country&#39;, &#39;metric_metric_category&#39;, &#39;metric_metric&#39;,
+           &#39;allocation_area_workstream&#39;, &#39;allocation_area_sub_workstream&#39;,
+          &#39;savings_type&#39;, &#39;purpose&#39;, &#39;date&#39;, &#39;stage&#39;, &#39;weekly_status&#39;,&#39;value_type&#39;,&#39;report&#39;
+        1.2 smller_than_L3 temporaty table is created where we store all of the samples which are different than to &#34;L4&#34;,&#34;L3&#34;, 
+            &#34;Submitted for L5 approval&#34; and &#34;Submitted for L4 approval&#34;
+        1.3 The rest of the data which don&#39;t belong to &#34;smaller_than_L3&#34;  is split in before merge and 
+            after merge depening on the previous month taken by the month when this script is running. 
+        1.4 Implemented and P&amp;L values are calculated by the following logic:
+            
+             1.4.1  For Implemented savings_type 
+                 - All of the instances which are before today have the following structure: 
+                         &#34;CTO_Stage&#34; = &#39;L5&#39; and &#34;CTO_Value&#34; the same as the P&amp;L value for the same date and same ID. 
+                         &#34;CTO_Stage&#34; =  &#34;L3/L4&#34;( depending on the previous level) and &#34;CTO_Value&#34;  = implemented_value - p&amp;l_value . 
+                         If the  implemented_value  &lt; p&amp;l_value we put &#34; CTO_Value&#34; = 0 
+                 - All of the instances which are after today have the following structure: 
+                         &#34;CTO_Stage&#34; = &#39;L5&#39; and &#34;CTO_Value&#34;  = implemented_value - p&amp;l_value(of today) 
+                         &#34;CTO_Stage&#34; =  &#34;L3/L4&#34;( depending on the previous level) and &#34;CTO_Value&#34;  =  p&amp;l_value(of today)   
+                         If the  implemented_value  &lt;  p&amp;l_value(of today)    &#34; CTO_Value&#34; = 0 
+            1.4.2. For P&amp;L savings_type 
+                - All of the instances which are before today have the following structure: 
+                    &#34;CTO_Stage&#34; = &#39;L5&#39; and &#34;CTO_Value&#34; the same as previous
+                - All of the instances which are after today have the following structure: 
+                    &#34;CTO_Stage&#34; = &#39;L5&#39; and &#34;CTO_Value&#34;  = p&amp;l_value - p&amp;l_value(of today) 
+                    &#34;CTO_Stage&#34; =  &#34;L3/L4&#34;( depending on the previous level) and &#34;CTO_Value&#34;  =  p&amp;l_value(of today)   
+                    If the   p&amp;l_value    &lt;  p&amp;l_value(of today)    &#34; CTO_Value&#34; = 0 
+    Parameters
+    ----------
+    impacts_simple : DataFrame
+        Table containing impacts_simple data which is previosly stored in the DB 
+
+    Returns
+    ----------
+    impact_simple_2: DataFrame
+    &#34;&#34;&#34; 
+    
+    from datetime import date, timedelta
+    import dateutil.relativedelta
+    import datetime
+    
+    now = datetime.datetime.now()
+    previous_month = datetime.datetime(now.year, now.month-1,1)
+    
+    list_columns_to_keep = [&#39;load_id&#39;, &#39;initiative_id&#39;,  &#39;workstream&#39;,
+           &#39;impact_geography_country&#39;, &#39;metric_metric_category&#39;, &#39;metric_metric&#39;,
+           &#39;allocation_area_workstream&#39;, &#39;allocation_area_sub_workstream&#39;,
+          &#39;savings_type&#39;, &#39;purpose&#39;, &#39;date&#39;, &#39;stage&#39;, &#39;weekly_status&#39;,
+           &#39;wave_value&#39;, &#39;value&#39;, &#39;value_type&#39;,&#39;report&#39;]
+    
+    impacts_simple[ &#39;impact_geography_country&#39;] =     impacts_simple[ &#39;impact_geography_country&#39;].fillna(&#39;-1&#39;)
+    impacts_simple_grouped = impacts_simple[list_columns_to_keep].groupby([&#39;load_id&#39;, &#39;initiative_id&#39;,  &#39;workstream&#39;,
+          &#39;impact_geography_country&#39;, &#39;metric_metric_category&#39;, &#39;metric_metric&#39;,
+           &#39;allocation_area_workstream&#39;, &#39;allocation_area_sub_workstream&#39;,
+          &#39;savings_type&#39;, &#39;purpose&#39;, &#39;date&#39;, &#39;stage&#39;, &#39;weekly_status&#39;,&#39;value_type&#39;,&#39;report&#39; ]  ).sum().reset_index()
+    
+    impacts_simple_grouped[ &#39;impact_geography_country&#39;] =     impacts_simple_grouped[ &#39;impact_geography_country&#39;].replace(&#39;-1&#39;,np.NaN)
+
+    
+    impacts_simple_grouped  = impacts_simple_grouped[impacts_simple_grouped.metric_metric_category != &#39;One-time impacts&#39;]
+    
+    impacts_simple = impacts_simple_grouped  
+    
+    smller_than_L3 = impacts_simple [(impacts_simple.stage != &#39;L4&#39;)&amp; (impacts_simple.stage != &#39;L3&#39;)
+    &amp;(impacts_simple.stage != &#39;Submitted for L4 approval&#39;)&amp; (impacts_simple.stage != &#39;Submitted for L5 approval&#39;) ]
+    smller_than_L3[&#39;CTO_Value&#39;] = smller_than_L3[&#39;value&#39;]
+    smller_than_L3[&#39;CTO_Stage&#39;] = smller_than_L3[&#39;stage&#39;]
+    smller_than_L3 = smller_than_L3.rename(columns={&#39;value&#39;: &#39;value_implemented&#39;})
+    
+  
+    
+    before_today_implemented = impacts_simple[(pd.to_datetime(impacts_simple.date) &lt;= previous_month) 
+    &amp; (impacts_simple.savings_type == &#39;Implemented&#39;)
+    &amp; ((impacts_simple.stage == &#39;L4&#39;)| (impacts_simple.stage == &#39;L3&#39;) |
+            (impacts_simple.stage == &#39;Submitted for L5 approval&#39;)| (impacts_simple.stage == &#39;Submitted for L4 approval&#39;))]
+   
+    
+    after_today_implemented =   impacts_simple[(pd.to_datetime(impacts_simple.date) &gt; previous_month) 
+    &amp; (impacts_simple.savings_type == &#39;Implemented&#39;)
+    &amp; ((impacts_simple.stage == &#39;L4&#39;)| (impacts_simple.stage == &#39;L3&#39;) |
+            (impacts_simple.stage == &#39;Submitted for L5 approval&#39;)| (impacts_simple.stage == &#39;Submitted for L4 approval&#39;))]
+   
+    
+    today_pl = impacts_simple[(pd.to_datetime(impacts_simple.date) == previous_month) 
+    &amp; (impacts_simple.savings_type == &#39;P&amp;L&#39;)
+    &amp; ((impacts_simple.stage == &#39;L4&#39;)| (impacts_simple.stage == &#39;L3&#39;) |
+            (impacts_simple.stage == &#39;Submitted for L5 approval&#39;)| (impacts_simple.stage == &#39;Submitted for L4 approval&#39;))]
+   
+   
+    before_today_pl = impacts_simple[(pd.to_datetime(impacts_simple.date) &lt;= previous_month)
+    &amp; (impacts_simple.savings_type == &#39;P&amp;L&#39;)
+    &amp; ((impacts_simple.stage == &#39;L4&#39;)| (impacts_simple.stage == &#39;L3&#39;) |
+            (impacts_simple.stage == &#39;Submitted for L5 approval&#39;)| (impacts_simple.stage == &#39;Submitted for L4 approval&#39;))]
+   
+    
+    after_today_pl=   impacts_simple[(pd.to_datetime(impacts_simple.date) &gt; previous_month) 
+    &amp; (impacts_simple.savings_type == &#39;P&amp;L&#39;)
+    &amp; ((impacts_simple.stage == &#39;L4&#39;)| (impacts_simple.stage == &#39;L3&#39;) |
+            (impacts_simple.stage == &#39;Submitted for L5 approval&#39;)| (impacts_simple.stage == &#39;Submitted for L4 approval&#39;))]
+   
+    
+    &#39;&#39;&#39; Implemented &#39;&#39;&#39;
+    
+    before_merge = before_today_implemented.merge(before_today_pl[[&#39;initiative_id&#39;,&#39;purpose&#39;,&#39;date&#39;,&#39;stage&#39;,&#39;value&#39;]],on = [&#39;initiative_id&#39;,&#39;purpose&#39;,&#39;date&#39;,&#39;stage&#39;])
+    before_merge = before_merge.rename(columns={&#39;value_x&#39;: &#39;value_implemented&#39;, &#39;value_y&#39;: &#39;value_pnl&#39;})
+    before_merge[&#39;CTO_Value&#39;] = before_merge[&#39;value_implemented&#39;] - before_merge[&#39;value_pnl&#39;]
+    before_merge[&#39;CTO_Value&#39;] =before_merge.apply(lambda row: 0 if row[&#39;CTO_Value&#39;] &lt;0 else row[&#39;CTO_Value&#39;] , axis = 1)
+
+   
+    before_merge_1 = before_merge.drop(&#39;value_pnl&#39;,axis = 1)
+    before_merge_1[&#39;CTO_Stage&#39;]=before_merge_1[&#39;stage&#39;]
+    before_merge_2 = before_merge.drop(&#39;CTO_Value&#39;,axis = 1)
+    before_merge_2 = before_merge_2.rename(columns={ &#39;value_pnl&#39; : &#39;CTO_Value&#39;})
+    before_merge_2[&#39;CTO_Stage&#39;]=&#39;L5&#39;
+    before_merge = pd.concat([before_merge_1, before_merge_2], ignore_index=True)
+    before_merge[&#39;savings_type&#39;] = &#39;Implemented&#39;
+    
+    
+    
+    after_merge = after_today_implemented.merge(today_pl[[&#39;initiative_id&#39;,&#39;purpose&#39;,&#39;stage&#39;,&#39;value&#39;]],on = [&#39;initiative_id&#39;,&#39;purpose&#39;,&#39;stage&#39;])
+    after_merge = after_merge.rename(columns={&#39;value_x&#39;: &#39;value_implemented&#39;, &#39;value_y&#39;: &#39;value_pnl&#39;})
+    after_merge[&#39;CTO_Value&#39;] = after_merge[&#39;value_implemented&#39;] - after_merge[&#39;value_pnl&#39;]
+    after_merge[&#39;CTO_Value&#39;] =after_merge.apply(lambda row: 0 if row[&#39;CTO_Value&#39;] &lt;0 else row[&#39;CTO_Value&#39;] , axis = 1)
+
+
+    after_merge_1 = after_merge.drop(&#39;value_pnl&#39;,axis = 1)
+    after_merge_1[&#39;CTO_Stage&#39;]=after_merge_1[&#39;stage&#39;]
+    after_merge_1 = after_merge_1.rename(columns={ &#39;date_x&#39;:&#39;date&#39;})
+    after_merge_2 = after_merge.drop(&#39;CTO_Value&#39;,axis = 1)
+    after_merge_2 = after_merge_2.rename(columns={ &#39;value_pnl&#39; : &#39;CTO_Value&#39;,&#39;date_x&#39;:&#39;date&#39;})
+    after_merge_2[&#39;CTO_Stage&#39;]= &#39;L5&#39;
+    after_merge = pd.concat([after_merge_1, after_merge_2], ignore_index=True)
+    after_merge[&#39;savings_type&#39;] = &#39;Implemented&#39;
+    
+    before_today_pl[&#39;CTO_Stage&#39;] = &#39;L5&#39;
+    before_today_pl[&#39;CTO_Value&#39;] = before_today_pl[&#39;value&#39;]
+    before_today_pl =  before_today_pl.rename(columns = {&#39;value&#39;:&#39;value_implemented&#39;})
+    
+    &#39;&#39;&#39; P&amp;L&#39;&#39;&#39;
+    
+    after_merge_pl = after_today_pl.merge(today_pl[[&#39;initiative_id&#39;,&#39;purpose&#39;,&#39;stage&#39;,&#39;value&#39;]],on = [&#39;initiative_id&#39;,&#39;purpose&#39;,&#39;stage&#39;])
+    after_merge_pl = after_merge_pl.rename(columns={&#39;value_x&#39;: &#39;value_implemented&#39;, &#39;value_y&#39;: &#39;value_pnl&#39;})
+    after_merge_pl[&#39;CTO_Value&#39;] = after_merge_pl[&#39;value_implemented&#39;] - after_merge_pl[&#39;value_pnl&#39;]
+    after_merge_pl[&#39;CTO_Value&#39;] =after_merge_pl.apply(lambda row: 0 if row[&#39;CTO_Value&#39;] &lt;0 else row[&#39;CTO_Value&#39;] , axis = 1)
+
+    after_merge_1_pl = after_merge_pl.drop(&#39;value_pnl&#39;,axis = 1 )
+    after_merge_1_pl = after_merge_1_pl.rename(columns={ &#39;date_x&#39;:&#39;date&#39;})
+    after_merge_1_pl[&#39;CTO_Stage&#39;]=after_merge_1_pl[&#39;stage&#39;]
+    after_merge_2_pl = after_merge_pl.drop(&#39;CTO_Value&#39;,axis = 1 )
+    after_merge_2_pl = after_merge_2_pl.rename(columns={ &#39;value_pnl&#39; : &#39;CTO_Value&#39;,&#39;date_x&#39;:&#39;date&#39;})
+    after_merge_2_pl[&#39;CTO_Stage&#39;]=&#39;L5&#39;
+    after_merge_pl = pd.concat([after_merge_1_pl, after_merge_2_pl], ignore_index=True)
+    after_merge_pl[&#39;savings_type&#39;] = &#39;P&amp;L&#39;
+    
+    
+    final = pd.concat([after_merge, after_merge_pl,before_merge,before_today_pl], ignore_index=True)
+
+    impact_sample_2 = pd.concat([final,smller_than_L3],ignore_index = True)
+    impact_sample_2 = impact_sample_2.rename(columns={ &#39;value_implemented&#39; : &#39;value&#39;})
+    impact_sample_2[[&#39;value&#39;,&#39;CTO_Value&#39;]] = impact_sample_2[[&#39;value&#39;,&#39;CTO_Value&#39;]].round(2)
+    
+
+    return impact_sample_2
+
+&#34;&#34;&#34;
+STSADA PORJECT EXECUTION 
+
+This script allows the user update the database from a new file &#34;Wave data extract - Transforming STADA&#34;.
+Steps to run the exe file: 
+    1. Open the new Wave data extract - Transforming STADA.xlsm file and save it as an excel file 
+    2. Put the new Wave data extract - Transforming STADA.xlsx file in the same repository as the reporting.exe 
+    3. Go to the folder where reporting.exe program is and run it. 
+    4. The new data should be stored in the impact_sample_2 table 
+&#34;&#34;&#34;
+
+
+import mysql.connector
+import pandas as pd
+import numpy as np
+from sqlalchemy import create_engine
+from io import StringIO
+import xlrd
+from variables import FILE_NAME_DIR
+
+
+    
+INITIATIVE_COLUMNS,MILESTONES_COLUMNS,IMPACTS_COLUMNS,KPI_COLUMNS = initialize_columns()
+
+filename= FILE_NAME_DIR
+
+engine = create_engine(&#34;mysql+mysqlconnector://m.durkan:1lqH8R3WzW4WFPsb@185.119.86.63/staging_layer&#34;)
+stage = engine.connect()
+
+engine = create_engine(&#34;mysql+mysqlconnector://m.durkan:1lqH8R3WzW4WFPsb@185.119.86.63/report_layer_test&#34;)
+report = engine.connect()
+
+engine = create_engine(&#34;mysql+mysqlconnector://m.durkan:1lqH8R3WzW4WFPsb@185.119.86.63/integration_layer_test&#34;)
+new_integration = engine.connect()
+
+print(&#39;READ EXCEL FILE ! &#39;)
+Initiatives_input,Milestones_input,Impacts_input,KPI_input = read_xlsx_files(filename)
+
+print(&#39;TAKE MAXIMUM ID &#39;)
+Initiatives_max,initiatives_max_id = take_maximum_load_index(&#39;initiatives&#39;,stage)
+Milestones_max,milestones_max_id = take_maximum_load_index(&#39;milestones&#39;,stage)
+Impacts_max,imacts_max_id = take_maximum_load_index(&#39;impacts&#39;,stage)
+KPI_max,kpi_max_id = take_maximum_load_index(&#39;kpidetails&#39;,stage)
+
+print(&#39;GENERATE LOAD ID&#39;)
+Initiatives_input = create_load_index(Initiatives_input,Initiatives_max,initiatives_max_id)
+Milestones_input = create_load_index(Milestones_input,Milestones_max,milestones_max_id)
+Impacts_input = create_load_index(Impacts_input,Impacts_max,imacts_max_id)
+KPI_input = create_load_index(KPI_input,KPI_max,kpi_max_id)
+
+print(&#39;TRUNCATE TABLES&#39;)
+stage.execute( &#39;&#39;&#39;TRUNCATE TABLE initiatives&#39;&#39;&#39; )
+stage.execute( &#39;&#39;&#39;TRUNCATE TABLE milestones&#39;&#39;&#39; )
+stage.execute( &#39;&#39;&#39;TRUNCATE TABLE impacts&#39;&#39;&#39; )
+stage.execute( &#39;&#39;&#39;TRUNCATE TABLE kpidetails&#39;&#39;&#39; )
+
+
+
+print(&#39;STORE TABLES IN DATABASE STAGE&#39;)
+Initiatives_input.columns = INITIATIVE_COLUMNS
+stage.execute(&#39;&#39;&#39;ALTER TABLE staging_layer.initiatives CONVERT TO CHARACTER SET utf8&#39;&#39;&#39;)
+Initiatives_input.to_sql(name = &#39;initiatives&#39;,con=stage,index = False,if_exists=&#39;append&#39;)
+
+Milestones_input.columns = MILESTONES_COLUMNS
+stage.execute(&#39;&#39;&#39;ALTER TABLE staging_layer.milestones CONVERT TO CHARACTER SET utf8&#39;&#39;&#39;)
+Milestones_input.to_sql(name=&#39;milestones&#39;,con=stage,index=False,if_exists=&#39;append&#39;)
+
+Impacts_input = Impacts_input.iloc[:,:69]
+Impacts_input.columns= IMPACTS_COLUMNS
+stage.execute(&#39;&#39;&#39;ALTER TABLE staging_layer.impacts CONVERT TO CHARACTER SET utf8&#39;&#39;&#39;)
+Impacts_input.to_sql(name=&#39;impacts&#39;,con=stage,index=False,if_exists=&#39;replace&#39;)
+
+KPI_input = KPI_input.iloc[:,:59]
+KPI_input.columns = KPI_COLUMNS
+stage.execute(&#39;&#39;&#39;ALTER TABLE staging_layer.kpidetails CONVERT TO CHARACTER SET utf8&#39;&#39;&#39;)
+KPI_input.to_sql(name=&#39;kpidetails&#39;,con=stage,index=False,if_exists=&#39;replace&#39;)
+
+print(&#39;LOADING TABLES&#39;)
+impacts,kpi,milestones,initiatives = loading_tables(stage)
+
+print(&#39;CHANGING THE IMPACT STATUS&#39;)
+impacts = change_the_impact_status (impacts)
+
+print(&#39;CHECK IF NEW TABLE IS LOADED&#39;)
+check_new_table_loaded(new_integration,initiatives)
+
+print(&#39;PRE-PROCESS IMPACT TABLE &#39;)
+impacts = pre_process_impact_columns(impacts)
+
+print(&#39;SUBSETTING IMPACT TABLE! &#39;)
+impacts = subsetting_impacts(impacts)
+
+print(&#39;CREATE IMPACT DESCRIPTION AND STORE&#39; )
+impacts_description = create_impact_description_and_store(impacts,new_integration)
+
+print(&#39;CREATE AND STORE IMPACT VALUE&#39;)
+impacts_value = create_and_store_impact_value(impacts,new_integration)
+
+print(&#39;CREATE AND STORE KPI DESCRIPTION!&#39;)
+create_and_store_kpi_descriptions(kpi,new_integration)
+
+print(&#39;CREATE AND STORE KPI VALUE&#39;)
+create_and_store_kpi_value(kpi,new_integration)    
+
+print(&#39;PROCESSING AND STORING MILESTONE&#39;)
+processing_and_storing_milestones(milestones,new_integration)
+
+print(&#39;PROCESSING AND STORING INITIATIVES&#39;)
+initiatives = processing_and_storing_initiatives(initiatives,new_integration)
+
+print(&#39;TRANSFORMING INITIATIVES&#39;)
+impacts_with_new,impacts = transforming_initiatives(initiatives,impacts_description,impacts_value,impacts)
+
+print(&#39;TRANSFORMING IMPACT!&#39;)
+impacts_out = transofmring_impact_saving_implemented(impacts_with_new,impacts)
+
+print(&#39;CREATING IMPACT SIMPLE&#39;)
+impacts_simple = creating_impact_simple(impacts_out)
+
+print(&#39;STORE IMPACT SIMPLE&#39;)
+
+stage.execute(&#39;&#39;&#39;ALTER TABLE integration_layer_test.impact_simple CONVERT TO CHARACTER SET utf8&#39;&#39;&#39;)
+impacts_simple.to_sql(name=&#39;impact_simple&#39;,con=new_integration,index=False,if_exists=&#39;append&#39;)
+
+
+engine = create_engine(&#34;mysql+mysqlconnector://m.durkan:1lqH8R3WzW4WFPsb@185.119.86.63/report_layer_test&#34;)
+report = engine.connect()
+
+stage.execute(&#39;&#39;&#39;ALTER TABLE report_layer_test.impact_simple CONVERT TO CHARACTER SET utf8&#39;&#39;&#39;)
+impacts_simple.to_sql(name=&#39;impact_simple&#39;,con=report,index=False,if_exists=&#39;replace&#39;)  
+
+print(&#39;CREATE IMPACT SAMPLE 2&#39;)
+impact_sample_2 = create_new_columns_and_impace_2(impacts_simple)
+print(&#39;STORE IMPACT SAMPLE 2&#39;)
+impact_sample_2.to_sql(name=&#39;impact_simple_2&#39;,con=new_integration,index=False,if_exists=&#39;append&#39;)
+impact_sample_2.to_sql(name=&#39;impact_simple_2&#39;,con=report,index=False,if_exists=&#39;replace&#39;) 
+
+print(&#39;CLOSING SESSIONS....&#39;)
+closing_sessions(report)
+closing_sessions(new_integration)
+closing_sessions(stage)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2> How to run the execution file</h2>
+
+<h4>This script allows the user update the database from a new file "Wave data extract - Transforming STADA".
+	<dl>
+	Steps to run the exe file: 
+	<dl>
+    1. Open the new Wave data extract - Transforming STADA.xlsm file and save it as (Wave data extract - Transforming STADA.xlsx) excel file 
+	<dl>
+    2. Put the new Wave data extract - Transforming STADA.xlsx file in the same repository as the reporting.exe 
+	<dl>
+    3. Go to the folder where reporting.exe program is and run it. 
+	<dl>
+    4. The new data should be stored in the impact_sample_2 table  </h4>
+<h2 class="section-title" id="header-functions">Functions</h2>
+
+<dl>
+<dt id="reporting.change_the_impact_status"><code class="name flex">
+<span>def <span class="ident">change_the_impact_status</span></span>(<span>impacts)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>This function changes the "Impact Status" column if:
+* 'P&amp;L effective savings' = "P&amp;L"
+* 'Implemented savings' = 'Implemented'
+Also the column name "Impact Status" is changed to "saving_type"</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>impacts</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table ( by default needs to be the impacts table)</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>impacts</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Changed input table</dd>
+</dl></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def change_the_impact_status (impacts):
+    &#34;&#34;&#34;
+    This function changes the &#34;Impact Status&#34; column if: 
+        * &#39;P&amp;L effective savings&#39; = &#34;P&amp;L&#34;
+        * &#39;Implemented savings&#39; = &#39;Implemented&#39;
+    Also the column name &#34;Impact Status&#34; is changed to &#34;saving_type&#34;
+    
+    Parameters
+    ----------
+    impacts : DataFrame
+        Table ( by default needs to be the impacts table)
+
+    Returns
+    ----------
+    impacts: DataFrame
+        Changed input table
+    &#34;&#34;&#34;
+    impacts.loc[impacts[&#39;Impact status&#39;]==&#39;P&amp;L effective savings&#39;,&#39;Impact status&#39;]=&#34;P&amp;L&#34;
+    impacts.loc[impacts[&#39;Impact status&#39;]==&#39;Implemented savings&#39;,&#39;Impact status&#39;]=&#34;Implemented&#34;
+    impacts.rename(columns={&#39;Impact status&#39;:&#39;savings_type&#39;},inplace=True)
+    return impacts</code></pre>
+</details>
+</dd>
+<dt id="reporting.check_new_table_loaded"><code class="name flex">
+<span>def <span class="ident">check_new_table_loaded</span></span>(<span>engine, initiatives)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Check if new table is uploaded
+- or else we will have multiple instances with the same data and reports will ne wrong
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>engine</code></strong> :&ensp;<code>object</code></dt>
+<dd>Object for the layer in the DB</dd>
+<dt><strong><code>initiatives</code></strong> :&ensp;<code>Data</code> <code>Frame</code></dt>
+<dd>Initiatives Table</dd>
+</dl>
+<h2 id="raises">Raises:</h2>
+<p>Value Error ("Before running the code, please upload new data with WAVE Import Tool")</p></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def check_new_table_loaded(engine,initiatives):
+    
+    &#34;&#34;&#34;
+    Check if new table is uploaded
+        - or else we will have multiple instances with the same data and reports will ne wrong
+    Parameters
+    ----------
+    engine : object
+        Object for the layer in the DB
+    initiatives : Data Frame 
+        Initiatives Table
+    
+    Raises:
+    ----------
+    Value Error (&#34;Before running the code, please upload new data with WAVE Import Tool&#34;)
+    &#34;&#34;&#34;
+    initiatives_integ=loading_table(&#39;initiatives&#39;,engine)
+    
+    if initiatives_integ.load_id.max()==initiatives.load_id.max():
+        raise ValueError(&#34;Before running the code, please upload new data with WAVE Import Tool&#34;)</code></pre>
+</details>
+</dd>
+<dt id="reporting.closing_sessions"><code class="name flex">
+<span>def <span class="ident">closing_sessions</span></span>(<span>session)</span>
+</code></dt>
+<dd>
+<section class="desc"><h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table containing Load_id as a column</dd>
+<dt><strong><code>lid</code></strong> :&ensp;<code>int</code></dt>
+<dd>Load id</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>new_data</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def closing_sessions(session):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    data : DataFrame
+        Table containing Load_id as a column
+    lid : int
+        Load id
+    
+    Returns
+    ----------
+    new_data: DataFrame
+    &#34;&#34;&#34; 
+    
+    session.close()
+    print(str(session) + &#39;IS CLOSED!&#39;)</code></pre>
+</details>
+</dd>
+<dt id="reporting.create_and_store_impact_value"><code class="name flex">
+<span>def <span class="ident">create_and_store_impact_value</span></span>(<span>impacts, new_integration)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Create and Store impact values.
+Forecasts are now overwritten with Plans.
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>impacts</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table containing impacts data</dd>
+<dt><strong><code>new_integration</code></strong> :&ensp;<code>object</code></dt>
+<dd>Connection to DB</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>impacts_value</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def create_and_store_impact_value(impacts,new_integration):
+    
+    &#34;&#34;&#34;
+    Create and Store impact values. 
+    Forecasts are now overwritten with Plans.
+    Parameters
+    ----------
+    impacts : DataFrame
+        Table containing impacts data 
+    new_integration : object
+        Connection to DB
+    
+    Returns
+    ----------
+    impacts_value: DataFrame
+    &#34;&#34;&#34;
+    impacts_value=impacts[[&#39;id&#39;, &#39;load_id&#39;, &#39;impact_id&#39;,&#39;purpose&#39;,&#34;savings_type&#34;, &#39;2017_10_01&#39;,
+           &#39;2017_11_01&#39;, &#39;2017_12_01&#39;, &#39;2018_01_01&#39;, &#39;2018_02_01&#39;, &#39;2018_03_01&#39;,
+           &#39;2018_04_01&#39;, &#39;2018_05_01&#39;, &#39;2018_06_01&#39;, &#39;2018_07_01&#39;, &#39;2018_08_01&#39;,
+           &#39;2018_09_01&#39;, &#39;2018_10_01&#39;, &#39;2018_11_01&#39;, &#39;2018_12_01&#39;, &#39;2019_01_01&#39;,
+           &#39;2019_02_01&#39;, &#39;2019_03_01&#39;, &#39;2019_04_01&#39;, &#39;2019_05_01&#39;, &#39;2019_06_01&#39;,
+           &#39;2019_07_01&#39;, &#39;2019_08_01&#39;, &#39;2019_09_01&#39;, &#39;2019_10_01&#39;, &#39;2019_11_01&#39;,
+           &#39;2019_12_01&#39;, &#39;2020_01_01&#39;, &#39;2020_02_01&#39;, &#39;2020_03_01&#39;, &#39;2020_04_01&#39;,
+           &#39;2020_05_01&#39;, &#39;2020_06_01&#39;, &#39;2020_07_01&#39;, &#39;2020_08_01&#39;, &#39;2020_09_01&#39;,
+           &#39;2020_10_01&#39;, &#39;2020_11_01&#39;, &#39;2020_12_01&#39;, &#39;2021_01_01&#39;, &#39;2021_02_01&#39;,
+           &#39;2021_03_01&#39;, &#39;2021_04_01&#39;, &#39;2021_05_01&#39;, &#39;2021_06_01&#39;, &#39;2021_07_01&#39;,
+           &#39;2021_08_01&#39;, &#39;2021_09_01&#39;, &#39;2021_10_01&#39;, &#39;2021_11_01&#39;, &#39;2021_12_01&#39;]]
+    
+    
+    ids=[&#39;id&#39;, &#39;load_id&#39;, &#39;impact_id&#39;,&#39;savings_type&#39;,&#39;purpose&#39;]
+    val=[&#39;2017_10_01&#39;,
+           &#39;2017_11_01&#39;, &#39;2017_12_01&#39;, &#39;2018_01_01&#39;, &#39;2018_02_01&#39;, &#39;2018_03_01&#39;,
+           &#39;2018_04_01&#39;, &#39;2018_05_01&#39;, &#39;2018_06_01&#39;, &#39;2018_07_01&#39;, &#39;2018_08_01&#39;,
+           &#39;2018_09_01&#39;, &#39;2018_10_01&#39;, &#39;2018_11_01&#39;, &#39;2018_12_01&#39;, &#39;2019_01_01&#39;,
+           &#39;2019_02_01&#39;, &#39;2019_03_01&#39;, &#39;2019_04_01&#39;, &#39;2019_05_01&#39;, &#39;2019_06_01&#39;,
+           &#39;2019_07_01&#39;, &#39;2019_08_01&#39;, &#39;2019_09_01&#39;, &#39;2019_10_01&#39;, &#39;2019_11_01&#39;,
+           &#39;2019_12_01&#39;, &#39;2020_01_01&#39;, &#39;2020_02_01&#39;, &#39;2020_03_01&#39;, &#39;2020_04_01&#39;,
+           &#39;2020_05_01&#39;, &#39;2020_06_01&#39;, &#39;2020_07_01&#39;, &#39;2020_08_01&#39;, &#39;2020_09_01&#39;,
+           &#39;2020_10_01&#39;, &#39;2020_11_01&#39;, &#39;2020_12_01&#39;, &#39;2021_01_01&#39;, &#39;2021_02_01&#39;,
+           &#39;2021_03_01&#39;, &#39;2021_04_01&#39;, &#39;2021_05_01&#39;, &#39;2021_06_01&#39;, &#39;2021_07_01&#39;,
+           &#39;2021_08_01&#39;, &#39;2021_09_01&#39;, &#39;2021_10_01&#39;, &#39;2021_11_01&#39;, &#39;2021_12_01&#39;]
+    
+    
+    impacts_value=pd.melt(impacts_value, id_vars=ids, value_vars=val,var_name=&#39;date&#39;,value_name=&#39;impact_value&#39;)
+    
+    impacts_value[&#39;date&#39;]=pd.to_datetime(impacts_value.date,format=&#39;%Y_%m_%d&#39;).dt.date  
+    
+    
+    impacts_value.to_sql(name=&#39;impacts_value&#39;,con=new_integration,index=False,if_exists=&#39;append&#39;)
+    
+    print(&#39;impact_value stored in the database&#39;)
+    return impacts_value</code></pre>
+</details>
+</dd>
+<dt id="reporting.create_and_store_kpi_descriptions"><code class="name flex">
+<span>def <span class="ident">create_and_store_kpi_descriptions</span></span>(<span>kpi, new_integration)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Create and store KPI description
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>kpi</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table containing KPI data</dd>
+<dt><strong><code>new_integration</code></strong> :&ensp;<code>object</code></dt>
+<dd>Connection to the DB</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>None</code></strong></dt>
+<dd>&nbsp;</dd>
+<dt><code>print</code>(<code>'KPI_descrition</code> <code>stored</code> <code>in</code> <code>the</code> <code>database'</code>)</dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def create_and_store_kpi_descriptions(kpi,new_integration):
+    &#34;&#34;&#34;
+    Create and store KPI description 
+    Parameters
+    ----------
+    kpi : DataFrame
+        Table containing KPI data
+    new_integration : object
+        
+        Connection to the DB    
+    Returns
+    ----------
+    None : 
+    print(&#39;KPI_descrition stored in the database&#39;)
+    &#34;&#34;&#34;
+    
+    kpi_description=kpi[[&#39;id&#39;, &#39;load_id&#39;, &#39;initiative_id&#39;, &#39;kpi_id&#39;, &#39;measure&#39;, &#39;unit&#39;]]
+    kpi_description.to_sql(name=&#39;kpi&#39;,con=new_integration,index=False,if_exists=&#39;append&#39;)
+    return print(&#39;KPI_descrition stored in the database&#39;)</code></pre>
+</details>
+</dd>
+<dt id="reporting.create_and_store_kpi_value"><code class="name flex">
+<span>def <span class="ident">create_and_store_kpi_value</span></span>(<span>kpi, new_integration)</span>
+</code></dt>
+<dd>
+<section class="desc"><h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>kpi</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table containing Load_id as a column</dd>
+<dt><strong><code>new_integration</code></strong> :&ensp;<code>Object</code></dt>
+<dd>Connection to the DB</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def create_and_store_kpi_value(kpi,new_integration):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    kpi : DataFrame
+        Table containing Load_id as a column
+    new_integration : Object
+        Connection to the DB 
+    
+    Returns
+    ----------
+    None
+    &#34;&#34;&#34;
+    
+    kpi_value=kpi[[&#39;id&#39;, &#39;load_id&#39;, &#39;kpi_id&#39;,&#39;purpose&#39;, &#39;2017_10_01&#39;,
+           &#39;2017_11_01&#39;, &#39;2017_12_01&#39;, &#39;2018_01_01&#39;, &#39;2018_02_01&#39;, &#39;2018_03_01&#39;,
+           &#39;2018_04_01&#39;, &#39;2018_05_01&#39;, &#39;2018_06_01&#39;, &#39;2018_07_01&#39;, &#39;2018_08_01&#39;,
+           &#39;2018_09_01&#39;, &#39;2018_10_01&#39;, &#39;2018_11_01&#39;, &#39;2018_12_01&#39;, &#39;2019_01_01&#39;,
+           &#39;2019_02_01&#39;, &#39;2019_03_01&#39;, &#39;2019_04_01&#39;, &#39;2019_05_01&#39;, &#39;2019_06_01&#39;,
+           &#39;2019_07_01&#39;, &#39;2019_08_01&#39;, &#39;2019_09_01&#39;, &#39;2019_10_01&#39;, &#39;2019_11_01&#39;,
+           &#39;2019_12_01&#39;, &#39;2020_01_01&#39;, &#39;2020_02_01&#39;, &#39;2020_03_01&#39;, &#39;2020_04_01&#39;,
+           &#39;2020_05_01&#39;, &#39;2020_06_01&#39;, &#39;2020_07_01&#39;, &#39;2020_08_01&#39;, &#39;2020_09_01&#39;,
+           &#39;2020_10_01&#39;, &#39;2020_11_01&#39;, &#39;2020_12_01&#39;, &#39;2021_01_01&#39;, &#39;2021_02_01&#39;,
+           &#39;2021_03_01&#39;, &#39;2021_04_01&#39;, &#39;2021_05_01&#39;, &#39;2021_06_01&#39;, &#39;2021_07_01&#39;,
+           &#39;2021_08_01&#39;, &#39;2021_09_01&#39;, &#39;2021_10_01&#39;, &#39;2021_11_01&#39;, &#39;2021_12_01&#39;]]
+    
+    ids=[&#39;id&#39;, &#39;load_id&#39;, &#39;kpi_id&#39;,&#39;purpose&#39;]
+    val=[&#39;2017_10_01&#39;,
+           &#39;2017_11_01&#39;, &#39;2017_12_01&#39;, &#39;2018_01_01&#39;, &#39;2018_02_01&#39;, &#39;2018_03_01&#39;,
+           &#39;2018_04_01&#39;, &#39;2018_05_01&#39;, &#39;2018_06_01&#39;, &#39;2018_07_01&#39;, &#39;2018_08_01&#39;,
+           &#39;2018_09_01&#39;, &#39;2018_10_01&#39;, &#39;2018_11_01&#39;, &#39;2018_12_01&#39;, &#39;2019_01_01&#39;,
+           &#39;2019_02_01&#39;, &#39;2019_03_01&#39;, &#39;2019_04_01&#39;, &#39;2019_05_01&#39;, &#39;2019_06_01&#39;,
+           &#39;2019_07_01&#39;, &#39;2019_08_01&#39;, &#39;2019_09_01&#39;, &#39;2019_10_01&#39;, &#39;2019_11_01&#39;,
+           &#39;2019_12_01&#39;, &#39;2020_01_01&#39;, &#39;2020_02_01&#39;, &#39;2020_03_01&#39;, &#39;2020_04_01&#39;,
+           &#39;2020_05_01&#39;, &#39;2020_06_01&#39;, &#39;2020_07_01&#39;, &#39;2020_08_01&#39;, &#39;2020_09_01&#39;,
+           &#39;2020_10_01&#39;, &#39;2020_11_01&#39;, &#39;2020_12_01&#39;, &#39;2021_01_01&#39;, &#39;2021_02_01&#39;,
+           &#39;2021_03_01&#39;, &#39;2021_04_01&#39;, &#39;2021_05_01&#39;, &#39;2021_06_01&#39;, &#39;2021_07_01&#39;,
+           &#39;2021_08_01&#39;, &#39;2021_09_01&#39;, &#39;2021_10_01&#39;, &#39;2021_11_01&#39;, &#39;2021_12_01&#39;]
+    
+    
+    kpi_value=pd.melt(kpi_value, id_vars=ids, value_vars=val,var_name=&#39;date&#39;,value_name=&#39;kpi_value&#39;)
+    kpi_value[&#39;date&#39;]=pd.to_datetime(kpi_value.date,format=&#39;%Y_%m_%d&#39;).dt.date
+    
+    kpi_value.to_sql(name=&#39;kpi_value&#39;,con=new_integration,index=False,if_exists=&#39;append&#39;)
+    return print(&#39;kpi_value stored in the database&#39;)</code></pre>
+</details>
+</dd>
+<dt id="reporting.create_impact_description_and_store"><code class="name flex">
+<span>def <span class="ident">create_impact_description_and_store</span></span>(<span>impacts, new_integration)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Create impact description table and store it in the database
+Parameters</p>
+<hr>
+<dl>
+<dt><strong><code>impacts</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table containing impacts Data</dd>
+<dt><strong><code>new_integration</code></strong> :&ensp;<code>object</code></dt>
+<dd>Connection to DB</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>impacts_description</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def create_impact_description_and_store(impacts,new_integration):
+    
+    &#34;&#34;&#34;
+    Create impact description table and store it in the database
+    Parameters
+    ----------
+    impacts : DataFrame
+        Table containing impacts Data 
+    new_integration : object
+        Connection to DB
+    
+    Returns
+    ----------
+    impacts_description: DataFrame
+    &#34;&#34;&#34;
+    
+    impacts_description=impacts[[&#39;id&#39;, &#39;load_id&#39;, &#39;initiative_id&#39;, &#39;impact_id&#39;, &#39;workstream&#39;, 
+                         &#39;impact_geography_country&#39;, &#39;metric_metric_category&#39;,
+                          &#39;metric_metric&#39;, &#39;allocation_area_workstream&#39;,
+                         &#39;allocation_area_sub_workstream&#39;, &#39;run_rate&#39;,&#34;savings_type&#34;]]
+    
+    
+    impacts_description.to_sql(name=&#39;impacts&#39;,con=new_integration,index=False,if_exists=&#39;append&#39;)
+    print(&#39;input description stored&#39;)
+    return impacts_description</code></pre>
+</details>
+</dd>
+<dt id="reporting.create_load_index"><code class="name flex">
+<span>def <span class="ident">create_load_index</span></span>(<span>table, max_index, max_id)</span>
+</code></dt>
+<dd>
+<section class="desc"><h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table containing Load_id as a column</dd>
+<dt><strong><code>lid</code></strong> :&ensp;<code>int</code></dt>
+<dd>Load id</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>new_data</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def create_load_index(table,max_index,max_id):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    data : DataFrame
+        Table containing Load_id as a column
+    lid : int
+        Load id
+    
+    Returns
+    ----------
+    new_data: DataFrame
+    &#34;&#34;&#34; 
+    cols = list(table.columns)
+    table[&#39;load_id&#39;] = max_index + 1 
+    table[&#39;id&#39;] = list(range(1,table.shape[0]+1))
+    table = table[[&#39;id&#39;,&#39;load_id&#39;] +cols]
+
+    return table </code></pre>
+</details>
+</dd>
+<dt id="reporting.create_new_columns_and_impace_2"><code class="name flex">
+<span>def <span class="ident">create_new_columns_and_impace_2</span></span>(<span>impacts_simple)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>This function is dealing with creating new columns CTO_stage and CTO_values for the inport data "impacts_simple".
+The function is split in couple of parts:
+1.1 The impact simple table is grouped by the following columns: 'load_id', 'initiative_id',
+'workstream',
+'impact_geography_country', 'metric_metric_category', 'metric_metric',
+'allocation_area_workstream', 'allocation_area_sub_workstream',
+'savings_type', 'purpose', 'date', 'stage', 'weekly_status','value_type','report'
+1.2 smller_than_L3 temporaty table is created where we store all of the samples which are different than to "L4","L3",
+"Submitted for L5 approval" and "Submitted for L4 approval"
+1.3 The rest of the data which don't belong to "smaller_than_L3"
+is split in before merge and
+after merge depening on the previous month taken by the month when this script is running.
+1.4 Implemented and P&amp;L values are calculated by the following logic:</p>
+<pre><code>     1.4.1  For Implemented savings_type 
+         - All of the instances which are before today have the following structure: 
+                 "CTO_Stage" = 'L5' and "CTO_Value" the same as the P&amp;L value for the same date and same ID. 
+                 "CTO_Stage" =  "L3/L4"( depending on the previous level) and "CTO_Value"  = implemented_value - p&amp;l_value . 
+                 If the  implemented_value  &lt; p&amp;l_value we put " CTO_Value" = 0 
+         - All of the instances which are after today have the following structure: 
+                 "CTO_Stage" = 'L5' and "CTO_Value"  = implemented_value - p&amp;l_value(of today) 
+                 "CTO_Stage" =  "L3/L4"( depending on the previous level) and "CTO_Value"  =  p&amp;l_value(of today)   
+                 If the  implemented_value  &lt;  p&amp;l_value(of today)    " CTO_Value" = 0 
+    1.4.2. For P&amp;L savings_type 
+        - All of the instances which are before today have the following structure: 
+            "CTO_Stage" = 'L5' and "CTO_Value" the same as previous
+        - All of the instances which are after today have the following structure: 
+            "CTO_Stage" = 'L5' and "CTO_Value"  = p&amp;l_value - p&amp;l_value(of today) 
+            "CTO_Stage" =  "L3/L4"( depending on the previous level) and "CTO_Value"  =  p&amp;l_value(of today)   
+            If the   p&amp;l_value    &lt;  p&amp;l_value(of today)    " CTO_Value" = 0
+</code></pre>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>impacts_simple</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table containing impacts_simple data which is previosly stored in the DB</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>impact_simple_2</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def create_new_columns_and_impace_2(impacts_simple):
+    &#34;&#34;&#34;
+    This function is dealing with creating new columns CTO_stage and CTO_values for the inport data &#34;impacts_simple&#34;. 
+    The function is split in couple of parts: 
+        1.1 The impact simple table is grouped by the following columns: &#39;load_id&#39;, &#39;initiative_id&#39;,  &#39;workstream&#39;,
+          &#39;impact_geography_country&#39;, &#39;metric_metric_category&#39;, &#39;metric_metric&#39;,
+           &#39;allocation_area_workstream&#39;, &#39;allocation_area_sub_workstream&#39;,
+          &#39;savings_type&#39;, &#39;purpose&#39;, &#39;date&#39;, &#39;stage&#39;, &#39;weekly_status&#39;,&#39;value_type&#39;,&#39;report&#39;
+        1.2 smller_than_L3 temporaty table is created where we store all of the samples which are different than to &#34;L4&#34;,&#34;L3&#34;, 
+            &#34;Submitted for L5 approval&#34; and &#34;Submitted for L4 approval&#34;
+        1.3 The rest of the data which don&#39;t belong to &#34;smaller_than_L3&#34;  is split in before merge and 
+            after merge depening on the previous month taken by the month when this script is running. 
+        1.4 Implemented and P&amp;L values are calculated by the following logic:
+            
+             1.4.1  For Implemented savings_type 
+                 - All of the instances which are before today have the following structure: 
+                         &#34;CTO_Stage&#34; = &#39;L5&#39; and &#34;CTO_Value&#34; the same as the P&amp;L value for the same date and same ID. 
+                         &#34;CTO_Stage&#34; =  &#34;L3/L4&#34;( depending on the previous level) and &#34;CTO_Value&#34;  = implemented_value - p&amp;l_value . 
+                         If the  implemented_value  &lt; p&amp;l_value we put &#34; CTO_Value&#34; = 0 
+                 - All of the instances which are after today have the following structure: 
+                         &#34;CTO_Stage&#34; = &#39;L5&#39; and &#34;CTO_Value&#34;  = implemented_value - p&amp;l_value(of today) 
+                         &#34;CTO_Stage&#34; =  &#34;L3/L4&#34;( depending on the previous level) and &#34;CTO_Value&#34;  =  p&amp;l_value(of today)   
+                         If the  implemented_value  &lt;  p&amp;l_value(of today)    &#34; CTO_Value&#34; = 0 
+            1.4.2. For P&amp;L savings_type 
+                - All of the instances which are before today have the following structure: 
+                    &#34;CTO_Stage&#34; = &#39;L5&#39; and &#34;CTO_Value&#34; the same as previous
+                - All of the instances which are after today have the following structure: 
+                    &#34;CTO_Stage&#34; = &#39;L5&#39; and &#34;CTO_Value&#34;  = p&amp;l_value - p&amp;l_value(of today) 
+                    &#34;CTO_Stage&#34; =  &#34;L3/L4&#34;( depending on the previous level) and &#34;CTO_Value&#34;  =  p&amp;l_value(of today)   
+                    If the   p&amp;l_value    &lt;  p&amp;l_value(of today)    &#34; CTO_Value&#34; = 0 
+    Parameters
+    ----------
+    impacts_simple : DataFrame
+        Table containing impacts_simple data which is previosly stored in the DB 
+
+    Returns
+    ----------
+    impact_simple_2: DataFrame
+    &#34;&#34;&#34; 
+    
+    from datetime import date, timedelta
+    import dateutil.relativedelta
+    import datetime
+    
+    now = datetime.datetime.now()
+    previous_month = datetime.datetime(now.year, now.month-1,1)
+    
+    list_columns_to_keep = [&#39;load_id&#39;, &#39;initiative_id&#39;,  &#39;workstream&#39;,
+           &#39;impact_geography_country&#39;, &#39;metric_metric_category&#39;, &#39;metric_metric&#39;,
+           &#39;allocation_area_workstream&#39;, &#39;allocation_area_sub_workstream&#39;,
+          &#39;savings_type&#39;, &#39;purpose&#39;, &#39;date&#39;, &#39;stage&#39;, &#39;weekly_status&#39;,
+           &#39;wave_value&#39;, &#39;value&#39;, &#39;value_type&#39;,&#39;report&#39;]
+    
+    impacts_simple[ &#39;impact_geography_country&#39;] =     impacts_simple[ &#39;impact_geography_country&#39;].fillna(&#39;-1&#39;)
+    impacts_simple_grouped = impacts_simple[list_columns_to_keep].groupby([&#39;load_id&#39;, &#39;initiative_id&#39;,  &#39;workstream&#39;,
+          &#39;impact_geography_country&#39;, &#39;metric_metric_category&#39;, &#39;metric_metric&#39;,
+           &#39;allocation_area_workstream&#39;, &#39;allocation_area_sub_workstream&#39;,
+          &#39;savings_type&#39;, &#39;purpose&#39;, &#39;date&#39;, &#39;stage&#39;, &#39;weekly_status&#39;,&#39;value_type&#39;,&#39;report&#39; ]  ).sum().reset_index()
+    
+    impacts_simple_grouped[ &#39;impact_geography_country&#39;] =     impacts_simple_grouped[ &#39;impact_geography_country&#39;].replace(&#39;-1&#39;,np.NaN)
+
+    
+    impacts_simple_grouped  = impacts_simple_grouped[impacts_simple_grouped.metric_metric_category != &#39;One-time impacts&#39;]
+    
+    impacts_simple = impacts_simple_grouped  
+    
+    smller_than_L3 = impacts_simple [(impacts_simple.stage != &#39;L4&#39;)&amp; (impacts_simple.stage != &#39;L3&#39;)
+    &amp;(impacts_simple.stage != &#39;Submitted for L4 approval&#39;)&amp; (impacts_simple.stage != &#39;Submitted for L5 approval&#39;) ]
+    smller_than_L3[&#39;CTO_Value&#39;] = smller_than_L3[&#39;value&#39;]
+    smller_than_L3[&#39;CTO_Stage&#39;] = smller_than_L3[&#39;stage&#39;]
+    smller_than_L3 = smller_than_L3.rename(columns={&#39;value&#39;: &#39;value_implemented&#39;})
+    
+  
+    
+    before_today_implemented = impacts_simple[(pd.to_datetime(impacts_simple.date) &lt;= previous_month) 
+    &amp; (impacts_simple.savings_type == &#39;Implemented&#39;)
+    &amp; ((impacts_simple.stage == &#39;L4&#39;)| (impacts_simple.stage == &#39;L3&#39;) |
+            (impacts_simple.stage == &#39;Submitted for L5 approval&#39;)| (impacts_simple.stage == &#39;Submitted for L4 approval&#39;))]
+   
+    
+    after_today_implemented =   impacts_simple[(pd.to_datetime(impacts_simple.date) &gt; previous_month) 
+    &amp; (impacts_simple.savings_type == &#39;Implemented&#39;)
+    &amp; ((impacts_simple.stage == &#39;L4&#39;)| (impacts_simple.stage == &#39;L3&#39;) |
+            (impacts_simple.stage == &#39;Submitted for L5 approval&#39;)| (impacts_simple.stage == &#39;Submitted for L4 approval&#39;))]
+   
+    
+    today_pl = impacts_simple[(pd.to_datetime(impacts_simple.date) == previous_month) 
+    &amp; (impacts_simple.savings_type == &#39;P&amp;L&#39;)
+    &amp; ((impacts_simple.stage == &#39;L4&#39;)| (impacts_simple.stage == &#39;L3&#39;) |
+            (impacts_simple.stage == &#39;Submitted for L5 approval&#39;)| (impacts_simple.stage == &#39;Submitted for L4 approval&#39;))]
+   
+   
+    before_today_pl = impacts_simple[(pd.to_datetime(impacts_simple.date) &lt;= previous_month)
+    &amp; (impacts_simple.savings_type == &#39;P&amp;L&#39;)
+    &amp; ((impacts_simple.stage == &#39;L4&#39;)| (impacts_simple.stage == &#39;L3&#39;) |
+            (impacts_simple.stage == &#39;Submitted for L5 approval&#39;)| (impacts_simple.stage == &#39;Submitted for L4 approval&#39;))]
+   
+    
+    after_today_pl=   impacts_simple[(pd.to_datetime(impacts_simple.date) &gt; previous_month) 
+    &amp; (impacts_simple.savings_type == &#39;P&amp;L&#39;)
+    &amp; ((impacts_simple.stage == &#39;L4&#39;)| (impacts_simple.stage == &#39;L3&#39;) |
+            (impacts_simple.stage == &#39;Submitted for L5 approval&#39;)| (impacts_simple.stage == &#39;Submitted for L4 approval&#39;))]
+   
+    
+    &#39;&#39;&#39; Implemented &#39;&#39;&#39;
+    
+    before_merge = before_today_implemented.merge(before_today_pl[[&#39;initiative_id&#39;,&#39;purpose&#39;,&#39;date&#39;,&#39;stage&#39;,&#39;value&#39;]],on = [&#39;initiative_id&#39;,&#39;purpose&#39;,&#39;date&#39;,&#39;stage&#39;])
+    before_merge = before_merge.rename(columns={&#39;value_x&#39;: &#39;value_implemented&#39;, &#39;value_y&#39;: &#39;value_pnl&#39;})
+    before_merge[&#39;CTO_Value&#39;] = before_merge[&#39;value_implemented&#39;] - before_merge[&#39;value_pnl&#39;]
+    before_merge[&#39;CTO_Value&#39;] =before_merge.apply(lambda row: 0 if row[&#39;CTO_Value&#39;] &lt;0 else row[&#39;CTO_Value&#39;] , axis = 1)
+
+   
+    before_merge_1 = before_merge.drop(&#39;value_pnl&#39;,axis = 1)
+    before_merge_1[&#39;CTO_Stage&#39;]=before_merge_1[&#39;stage&#39;]
+    before_merge_2 = before_merge.drop(&#39;CTO_Value&#39;,axis = 1)
+    before_merge_2 = before_merge_2.rename(columns={ &#39;value_pnl&#39; : &#39;CTO_Value&#39;})
+    before_merge_2[&#39;CTO_Stage&#39;]=&#39;L5&#39;
+    before_merge = pd.concat([before_merge_1, before_merge_2], ignore_index=True)
+    before_merge[&#39;savings_type&#39;] = &#39;Implemented&#39;
+    
+    
+    
+    after_merge = after_today_implemented.merge(today_pl[[&#39;initiative_id&#39;,&#39;purpose&#39;,&#39;stage&#39;,&#39;value&#39;]],on = [&#39;initiative_id&#39;,&#39;purpose&#39;,&#39;stage&#39;])
+    after_merge = after_merge.rename(columns={&#39;value_x&#39;: &#39;value_implemented&#39;, &#39;value_y&#39;: &#39;value_pnl&#39;})
+    after_merge[&#39;CTO_Value&#39;] = after_merge[&#39;value_implemented&#39;] - after_merge[&#39;value_pnl&#39;]
+    after_merge[&#39;CTO_Value&#39;] =after_merge.apply(lambda row: 0 if row[&#39;CTO_Value&#39;] &lt;0 else row[&#39;CTO_Value&#39;] , axis = 1)
+
+
+    after_merge_1 = after_merge.drop(&#39;value_pnl&#39;,axis = 1)
+    after_merge_1[&#39;CTO_Stage&#39;]=after_merge_1[&#39;stage&#39;]
+    after_merge_1 = after_merge_1.rename(columns={ &#39;date_x&#39;:&#39;date&#39;})
+    after_merge_2 = after_merge.drop(&#39;CTO_Value&#39;,axis = 1)
+    after_merge_2 = after_merge_2.rename(columns={ &#39;value_pnl&#39; : &#39;CTO_Value&#39;,&#39;date_x&#39;:&#39;date&#39;})
+    after_merge_2[&#39;CTO_Stage&#39;]= &#39;L5&#39;
+    after_merge = pd.concat([after_merge_1, after_merge_2], ignore_index=True)
+    after_merge[&#39;savings_type&#39;] = &#39;Implemented&#39;
+    
+    before_today_pl[&#39;CTO_Stage&#39;] = &#39;L5&#39;
+    before_today_pl[&#39;CTO_Value&#39;] = before_today_pl[&#39;value&#39;]
+    before_today_pl =  before_today_pl.rename(columns = {&#39;value&#39;:&#39;value_implemented&#39;})
+    
+    &#39;&#39;&#39; P&amp;L&#39;&#39;&#39;
+    
+    after_merge_pl = after_today_pl.merge(today_pl[[&#39;initiative_id&#39;,&#39;purpose&#39;,&#39;stage&#39;,&#39;value&#39;]],on = [&#39;initiative_id&#39;,&#39;purpose&#39;,&#39;stage&#39;])
+    after_merge_pl = after_merge_pl.rename(columns={&#39;value_x&#39;: &#39;value_implemented&#39;, &#39;value_y&#39;: &#39;value_pnl&#39;})
+    after_merge_pl[&#39;CTO_Value&#39;] = after_merge_pl[&#39;value_implemented&#39;] - after_merge_pl[&#39;value_pnl&#39;]
+    after_merge_pl[&#39;CTO_Value&#39;] =after_merge_pl.apply(lambda row: 0 if row[&#39;CTO_Value&#39;] &lt;0 else row[&#39;CTO_Value&#39;] , axis = 1)
+
+    after_merge_1_pl = after_merge_pl.drop(&#39;value_pnl&#39;,axis = 1 )
+    after_merge_1_pl = after_merge_1_pl.rename(columns={ &#39;date_x&#39;:&#39;date&#39;})
+    after_merge_1_pl[&#39;CTO_Stage&#39;]=after_merge_1_pl[&#39;stage&#39;]
+    after_merge_2_pl = after_merge_pl.drop(&#39;CTO_Value&#39;,axis = 1 )
+    after_merge_2_pl = after_merge_2_pl.rename(columns={ &#39;value_pnl&#39; : &#39;CTO_Value&#39;,&#39;date_x&#39;:&#39;date&#39;})
+    after_merge_2_pl[&#39;CTO_Stage&#39;]=&#39;L5&#39;
+    after_merge_pl = pd.concat([after_merge_1_pl, after_merge_2_pl], ignore_index=True)
+    after_merge_pl[&#39;savings_type&#39;] = &#39;P&amp;L&#39;
+    
+    
+    final = pd.concat([after_merge, after_merge_pl,before_merge,before_today_pl], ignore_index=True)
+
+    impact_sample_2 = pd.concat([final,smller_than_L3],ignore_index = True)
+    impact_sample_2 = impact_sample_2.rename(columns={ &#39;value_implemented&#39; : &#39;value&#39;})
+    impact_sample_2[[&#39;value&#39;,&#39;CTO_Value&#39;]] = impact_sample_2[[&#39;value&#39;,&#39;CTO_Value&#39;]].round(2)
+    
+
+    return impact_sample_2</code></pre>
+</details>
+</dd>
+<dt id="reporting.create_value_type_columns"><code class="name flex">
+<span>def <span class="ident">create_value_type_columns</span></span>(<span>df, flag)</span>
+</code></dt>
+<dd>
+<section class="desc"><h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table containing Load_id as a column</dd>
+<dt><strong><code>lid</code></strong> :&ensp;<code>int</code></dt>
+<dd>Load id</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>new_data</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def create_value_type_columns(df,flag):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    data : DataFrame
+        Table containing Load_id as a column
+    lid : int
+        Load id
+    
+    Returns
+    ----------
+    new_data: DataFrame
+    &#34;&#34;&#34;    
+    &#39;&#39;&#39;
+    flag = 0 pl_act
+    glag = 1  pl_pln
+    flag = 2 pl_frc
+    &#39;&#39;&#39;
+    
+    for i in range(11):
+        df.loc[:,&#39;shift_{}&#39;.format(i+1)]=df.groupby([&#39;initiative_id&#39;,&#39;impact_id&#39;,&#39;purpose&#39;,&#39;savings_type&#39;]).wave_value.shift(periods=i+1)
+        df.loc[df[&#39;shift_{}&#39;.format(i+1)].isna(),&#39;shift_{}&#39;.format(i+1)]=0
+    shift_columns=[&#39;wave_value&#39;,&#39;shift_1&#39;, &#39;shift_2&#39;, &#39;shift_3&#39;, &#39;shift_4&#39;,
+    &#39;shift_5&#39;, &#39;shift_6&#39;, &#39;shift_7&#39;, &#39;shift_8&#39;, 
+    &#39;shift_9&#39;, &#39;shift_10&#39;, &#39;shift_11&#39;]
+    if flag == 0:
+        df[&#39;dfual_value&#39;]=df[shift_columns].sum(axis=1)
+        df[&#39;pl_plan_value&#39;] = 0
+        df[&#39;pl_forecast_value&#39;] = 0
+        
+    if flag == 1:
+        df[&#39;dfual_value&#39;] = 0
+        df[&#39;pl_plan_value&#39;]=df[shift_columns].sum(axis=1)
+        df[&#39;pl_forecast_value&#39;] = 0
+    else:
+        df[&#39;dfual_value&#39;] = 0
+        df[&#39;pl_plan_value&#39;]= 0
+        df[&#39;pl_forecast_value&#39;] = df[shift_columns].sum(axis=1)
+        
+    shift_columns.remove(&#39;wave_value&#39;)
+    df.drop(columns=shift_columns,inplace=True)
+    df[&#39;value_type&#39;]=&#39;12_months_sum&#39; 
+    return df </code></pre>
+</details>
+</dd>
+<dt id="reporting.creating_impact_simple"><code class="name flex">
+<span>def <span class="ident">creating_impact_simple</span></span>(<span>impacts_out)</span>
+</code></dt>
+<dd>
+<section class="desc"><h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table containing Load_id as a column</dd>
+<dt><strong><code>lid</code></strong> :&ensp;<code>int</code></dt>
+<dd>Load id</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>new_data</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def creating_impact_simple(impacts_out):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    data : DataFrame
+        Table containing Load_id as a column
+    lid : int
+        Load id
+    
+    Returns
+    ----------
+    new_data: DataFrame
+    &#34;&#34;&#34; 
+    
+    impacts_simple = impacts_out.copy()
+    impacts_simple[&#39;value&#39;] = impacts_simple[&#39;impact_plan_value&#39;] + impacts_simple[&#39;impact_forecast_value&#39;] +impacts_simple[&#39;pl_plan_value&#39;] + impacts_simple[&#39;pl_forecast_value&#39;]
+
+    col = [&#39;id&#39;, &#39;load_id&#39;, &#39;initiative_id&#39;, &#39;impact_id&#39;, &#39;workstream&#39;, &#39;impact_geography_country&#39;,
+               &#39;metric_metric_category&#39;, &#39;metric_metric&#39;, &#39;allocation_area_workstream&#39;, &#39;allocation_area_sub_workstream&#39;,
+              &#39;run_rate&#39;, &#39;savings_type&#39;, &#39;purpose&#39;, &#39;date&#39;, &#39;stage&#39;, &#39;weekly_status&#39;, &#39;wave_value&#39;, &#39;value&#39;, &#39;value_type&#39;,&#39;report&#39;]
+
+    impacts_simple = impacts_simple[col]
+
+    conditions = [
+        (impacts_simple[&#39;workstream&#39;] == &#39;G%26A&#39;),
+        (impacts_simple[&#39;workstream&#39;] == &#39;R%26D&#39;)
+    ]
+
+    choices = [&#39;G&amp;A&#39;, &#39;R&amp;D&#39;]
+
+    impacts_simple[&#39;workstream&#39;] = np.select(conditions, choices, default = impacts_simple[&#39;workstream&#39;])
+
+    conditions = [
+        (impacts_simple[&#39;allocation_area_workstream&#39;] == &#39;G%26A&#39;),
+        (impacts_simple[&#39;allocation_area_workstream&#39;] == &#39;R%26D&#39;)
+    ]
+
+    choices = [&#39;G&amp;A&#39;, &#39;R&amp;D&#39;]
+    
+    impacts_simple[&#39;allocation_area_workstream&#39;] = np.select(conditions, choices, default = impacts_simple[&#39;allocation_area_workstream&#39;])
+    
+    return impacts_simple</code></pre>
+</details>
+</dd>
+<dt id="reporting.filter_category"><code class="name flex">
+<span>def <span class="ident">filter_category</span></span>(<span>imp, filter_string)</span>
+</code></dt>
+<dd>
+<section class="desc"><h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>imp</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table to filter categories in</dd>
+<dt><strong><code>filter_string</code></strong> :&ensp;<code>str</code></dt>
+<dd>String to compare category with</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>out</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Segmented Data Frame for each category for filter string</dd>
+</dl></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def filter_category(imp,filter_string):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    imp : DataFrame
+        Table to filter categories in
+    filter_string : str
+        String to compare category with 
+    
+    Returns
+    ----------
+    out: DataFrame
+        Segmented Data Frame for each category for filter string
+    &#34;&#34;&#34;
+    
+    data=imp.copy()
+    out=data[data.metric_metric_category==filter_string]
+    return out</code></pre>
+</details>
+</dd>
+<dt id="reporting.filter_load_id"><code class="name flex">
+<span>def <span class="ident">filter_load_id</span></span>(<span>data, lid)</span>
+</code></dt>
+<dd>
+<section class="desc"><h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table containing Load_id as a column</dd>
+<dt><strong><code>lid</code></strong> :&ensp;<code>int</code></dt>
+<dd>Load id</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>new_data</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Subset of table with the specific input load id</dd>
+</dl></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def filter_load_id(data,lid):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    data : DataFrame
+        Table containing Load_id as a column
+    lid : int
+        Load id
+    
+    Returns
+    ----------
+    new_data: DataFrame
+        Subset of table with the specific input load id
+    &#34;&#34;&#34;
+    new_data=data.copy()
+    new_data=new_data[new_data.load_id==lid]
+
+    return new_data</code></pre>
+</details>
+</dd>
+<dt id="reporting.initialize_columns"><code class="name flex">
+<span>def <span class="ident">initialize_columns</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def initialize_columns ():
+    INITIATIVE_COLUMNS = [&#39;id&#39;,
+     &#39;load_id&#39;,
+     &#39;initiative_id&#39;,
+     &#39;initiative_name&#39;,
+     &#39;stage&#39;,
+     &#39;weekly_status&#39;,
+     &#39;card_type&#39;,
+     &#39;cost_type&#39;,
+     &#39;geography_triggered&#39;,
+     &#39;report&#39;,
+     &#39;fte_type&#39;,
+     &#39;description_of_initiative_and_assumption_used&#39;,
+     &#39;what_is_the_money_step_-_how_does_this_add_value&#39;,
+     &#39;workstream&#39;,
+     &#39;sub-workstream&#39;,
+     &#39;initiative_owner&#39;,
+     &#39;initiative_owner_back-up&#39;,
+     &#39;initiative_lead_approver&#39;,
+     &#39;sponsor_approver&#39;,
+     &#39;finance_approver&#39;,
+     &#39;to_approver&#39;,
+     &#39;recurring_cash_impact&#39;,
+     &#39;one-time_cash_impact&#39;,
+     &#39;implementation_cost&#39;,
+     &#39;l1_actual_date&#39;,
+     &#39;l2_actual_date&#39;,
+     &#39;l3_planned_date&#39;,
+     &#39;l3_actual_date&#39;,
+     &#39;l3_forecast_date&#39;,
+     &#39;l3_latest_estimated_date&#39;,
+     &#39;l4_planned_date&#39;,
+     &#39;l4_actual_date&#39;,
+     &#39;l4_forecast_date&#39;,
+     &#39;l4_latest_estimated_date&#39;,
+     &#39;l5_actual_date&#39;,
+     &#39;sub_for_l2_approv_date&#39;,
+     &#39;sub_for_l3_approv_date&#39;,
+     &#39;sub_for_l4_approv_date&#39;,
+     &#39;sub_for_l5_approv_date&#39;]
+    
+    MILESTONES_COLUMNS = [&#39;id&#39;,
+     &#39;load_id&#39;,
+     &#39;milestone_id&#39;,
+     &#39;initiative_id&#39;,
+     &#39;initiative_name&#39;,
+     &#39;milestone_name&#39;,
+     &#39;status&#39;,
+     &#39;planning_summary&#39;,
+     &#39;planning_check&#39;,
+     &#39;owner&#39;,
+     &#39;start_date&#39;,
+     &#39;end_date&#39;]
+    
+    
+    IMPACTS_COLUMNS = [&#39;id&#39;,
+     &#39;load_id&#39;,
+     &#39;initiative_id&#39;,
+     &#39;impact_id&#39;,
+     &#39;initiative_name&#39;,
+     &#39;Stage&#39;,
+     &#39;Weekly status&#39;,
+     &#39;Workstream&#39;,
+     &#39;Initiative owner&#39;,
+     &#39;L4 planned date&#39;,
+     &#39;Impact geography &gt; Country&#39;,
+     &#39;Impact status&#39;,
+     &#39;Metric &gt; Metric Category&#39;,
+     &#39;Metric &gt; Metric&#39;,
+     &#39;Allocation area &gt; Workstream&#39;,
+     &#39;Allocation area &gt; Sub-Workstream&#39;,
+     &#39;purpose&#39;,
+     &#39;Run Rate&#39;,
+     &#39;2017_10_01&#39;,
+     &#39;2017_11_01&#39;,
+     &#39;2017_12_01&#39;,
+     &#39;2018_01_01&#39;,
+     &#39;2018_02_01&#39;,
+     &#39;2018_03_01&#39;,
+     &#39;2018_04_01&#39;,
+     &#39;2018_05_01&#39;,
+     &#39;2018_06_01&#39;,
+     &#39;2018_07_01&#39;,
+     &#39;2018_08_01&#39;,
+     &#39;2018_09_01&#39;,
+     &#39;2018_10_01&#39;,
+     &#39;2018_11_01&#39;,
+     &#39;2018_12_01&#39;,
+     &#39;2019_01_01&#39;,
+     &#39;2019_02_01&#39;,
+     &#39;2019_03_01&#39;,
+     &#39;2019_04_01&#39;,
+     &#39;2019_05_01&#39;,
+     &#39;2019_06_01&#39;,
+     &#39;2019_07_01&#39;,
+     &#39;2019_08_01&#39;,
+     &#39;2019_09_01&#39;,
+     &#39;2019_10_01&#39;,
+     &#39;2019_11_01&#39;,
+     &#39;2019_12_01&#39;,
+     &#39;2020_01_01&#39;,
+     &#39;2020_02_01&#39;,
+     &#39;2020_03_01&#39;,
+     &#39;2020_04_01&#39;,
+     &#39;2020_05_01&#39;,
+     &#39;2020_06_01&#39;,
+     &#39;2020_07_01&#39;,
+     &#39;2020_08_01&#39;,
+     &#39;2020_09_01&#39;,
+     &#39;2020_10_01&#39;,
+     &#39;2020_11_01&#39;,
+     &#39;2020_12_01&#39;,
+     &#39;2021_01_01&#39;,
+     &#39;2021_02_01&#39;,
+     &#39;2021_03_01&#39;,
+     &#39;2021_04_01&#39;,
+     &#39;2021_05_01&#39;,
+     &#39;2021_06_01&#39;,
+     &#39;2021_07_01&#39;,
+     &#39;2021_08_01&#39;,
+     &#39;2021_09_01&#39;,
+     &#39;2021_10_01&#39;,
+     &#39;2021_11_01&#39;,
+     &#39;2021_12_01&#39;,
+#     &#39;2022_01_01&#39;,
+#     &#39;2022_02_01&#39;,
+#     &#39;2022_03_01&#39;,
+#     &#39;2022_04_01&#39;,
+#     &#39;2022_05_01&#39;,
+#     &#39;2022_06_01&#39;,
+#     &#39;2022_07_01&#39;,
+#     &#39;2022_08_01&#39;,
+#     &#39;2022_09_01&#39;,
+#     &#39;2022_10_01&#39;,
+#     &#39;2022_11_01&#39;,
+#     &#39;2022_12_01&#39;,
+#     &#39;2023_01_01&#39;,
+#     &#39;2023_02_01&#39;,
+#     &#39;2023_03_01&#39;,
+#     &#39;2023_04_01&#39;,
+#     &#39;2023_05_01&#39;,
+#     &#39;2023_06_01&#39;,
+#     &#39;2023_07_01&#39;,
+#     &#39;2023_08_01&#39;,
+#     &#39;2023_09_01&#39;,
+#     &#39;2023_10_01&#39;,
+#     &#39;2023_11_01&#39;,
+#     &#39;2023_12_01&#39;,
+ ]
+    
+    KPI_COLUMNS = [&#39;id&#39;,
+     &#39;load_id&#39;,
+     &#39;kpi_id&#39;,
+     &#39;initiative_id&#39;,
+     &#39;initiative_name&#39;,
+     &#39;measure&#39;,
+     &#39;unit&#39;,
+     &#39;purpose&#39;,
+     &#39;2017_10_01&#39;,
+     &#39;2017_11_01&#39;,
+     &#39;2017_12_01&#39;,
+     &#39;2018_01_01&#39;,
+     &#39;2018_02_01&#39;,
+     &#39;2018_03_01&#39;,
+     &#39;2018_04_01&#39;,
+     &#39;2018_05_01&#39;,
+     &#39;2018_06_01&#39;,
+     &#39;2018_07_01&#39;,
+     &#39;2018_08_01&#39;,
+     &#39;2018_09_01&#39;,
+     &#39;2018_10_01&#39;,
+     &#39;2018_11_01&#39;,
+     &#39;2018_12_01&#39;,
+     &#39;2019_01_01&#39;,
+     &#39;2019_02_01&#39;,
+     &#39;2019_03_01&#39;,
+     &#39;2019_04_01&#39;,
+     &#39;2019_05_01&#39;,
+     &#39;2019_06_01&#39;,
+     &#39;2019_07_01&#39;,
+     &#39;2019_08_01&#39;,
+     &#39;2019_09_01&#39;,
+     &#39;2019_10_01&#39;,
+     &#39;2019_11_01&#39;,
+     &#39;2019_12_01&#39;,
+     &#39;2020_01_01&#39;,
+     &#39;2020_02_01&#39;,
+     &#39;2020_03_01&#39;,
+     &#39;2020_04_01&#39;,
+     &#39;2020_05_01&#39;,
+     &#39;2020_06_01&#39;,
+     &#39;2020_07_01&#39;,
+     &#39;2020_08_01&#39;,
+     &#39;2020_09_01&#39;,
+     &#39;2020_10_01&#39;,
+     &#39;2020_11_01&#39;,
+     &#39;2020_12_01&#39;,
+     &#39;2021_01_01&#39;,
+     &#39;2021_02_01&#39;,
+     &#39;2021_03_01&#39;,
+     &#39;2021_04_01&#39;,
+     &#39;2021_05_01&#39;,
+     &#39;2021_06_01&#39;,
+     &#39;2021_07_01&#39;,
+     &#39;2021_08_01&#39;,
+     &#39;2021_09_01&#39;,
+     &#39;2021_10_01&#39;,
+     &#39;2021_11_01&#39;,
+     &#39;2021_12_01&#39;,
+#     &#39;2022_01_01&#39;,
+#     &#39;2022_02_01&#39;,
+#     &#39;2022_03_01&#39;,
+#     &#39;2022_04_01&#39;,
+#     &#39;2022_05_01&#39;,
+#     &#39;2022_06_01&#39;,
+#     &#39;2022_07_01&#39;,
+#     &#39;2022_08_01&#39;,
+#     &#39;2022_09_01&#39;,
+#     &#39;2022_10_01&#39;,
+#     &#39;2022_11_01&#39;,
+#     &#39;2022_12_01&#39;,
+#     &#39;2023_01_01&#39;,
+#     &#39;2023_02_01&#39;,
+#     &#39;2023_03_01&#39;,
+#     &#39;2023_04_01&#39;,
+#     &#39;2023_05_01&#39;,
+#     &#39;2023_06_01&#39;,
+#     &#39;2023_07_01&#39;,
+#     &#39;2023_08_01&#39;,
+#     &#39;2023_09_01&#39;,
+#     &#39;2023_10_01&#39;,
+#     &#39;2023_11_01&#39;,
+#     &#39;2023_12_01&#39;,
+  ]
+    return INITIATIVE_COLUMNS,MILESTONES_COLUMNS,IMPACTS_COLUMNS,KPI_COLUMNS</code></pre>
+</details>
+</dd>
+<dt id="reporting.loading_table"><code class="name flex">
+<span>def <span class="ident">loading_table</span></span>(<span>table_name, connection)</span>
+</code></dt>
+<dd>
+<section class="desc"><h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>table_name</code></strong> :&ensp;<code>str</code></dt>
+<dd>Name of the table which needs to be loaded</dd>
+<dt><strong><code>connection</code></strong> :&ensp;<code>object</code></dt>
+<dd>Which sqlalchamy object to be used to extract the table</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>table</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Extracted the table with table_name(given as input) from the specific database</dd>
+</dl></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def loading_table(table_name,connection):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    table_name : str
+        Name of the table which needs to be loaded
+    connection : object
+        Which sqlalchamy object to be used to extract the table
+    
+    Returns
+    ----------
+    table: DataFrame
+        Extracted the table with table_name(given as input) from the specific database
+        
+    &#34;&#34;&#34;
+    print(&#39;{} {}&#39;.format(&#34;SELECT * FROM&#34;, table_name))
+    table=pd.read_sql(&#39;{} {}&#39;.format(&#34;SELECT * FROM&#34;, table_name),con=connection)
+    table=filter_load_id(table,table.load_id.max())
+    return table</code></pre>
+</details>
+</dd>
+<dt id="reporting.loading_tables"><code class="name flex">
+<span>def <span class="ident">loading_tables</span></span>(<span>stage)</span>
+</code></dt>
+<dd>
+<section class="desc"><h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>stage</code></strong> :&ensp;<code>object</code></dt>
+<dd>Data Base object</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>impacts</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Impacts Table</dd>
+<dt><strong><code>kpi</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>KPI Table</dd>
+<dt><strong><code>milestones</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Milestones Table</dd>
+<dt><strong><code>initiatives</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Initiatives Table</dd>
+</dl></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def loading_tables(stage):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    stage : object
+        Data Base object
+
+    
+    Returns
+    ----------
+    impacts: DataFrame
+        Impacts Table
+    kpi: DataFrame
+        KPI Table
+    milestones: DataFrame
+        Milestones Table
+    initiatives: DataFrame
+        Initiatives Table
+    &#34;&#34;&#34;
+    
+    print(&#39;Loading Tables&#39;)
+    impacts=loading_table(&#39;impacts&#39;,stage)
+    kpi=loading_table(&#39;kpidetails&#39;,stage)
+    milestones=loading_table(&#39;milestones&#39;,stage)
+    initiatives=loading_table(&#39;initiatives&#39;,stage)
+    
+    return impacts,kpi,milestones,initiatives</code></pre>
+</details>
+</dd>
+<dt id="reporting.pre_process_impact_columns"><code class="name flex">
+<span>def <span class="ident">pre_process_impact_columns</span></span>(<span>impacts)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>we are spliting the table according to the dabase documentation
+'id', 'load_id', 'initiative_id', 'impact_id' is the
+key making date colums as one column with date values</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>impacts</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table containing Impacts data</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>impacts</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def pre_process_impact_columns(impacts):
+    &#34;&#34;&#34;
+    we are spliting the table according to the dabase documentation
+    &#39;id&#39;, &#39;load_id&#39;, &#39;initiative_id&#39;, &#39;impact_id&#39; is the 
+    key making date colums as one column with date values
+    
+    Parameters
+    ----------
+    impacts : DataFrame
+        Table containing Impacts data
+
+    Returns
+    ----------
+    impacts: DataFrame
+    &#34;&#34;&#34;
+    imp_cols=impacts.columns.tolist()
+    imp_cols=[s.replace(&#39; &#39;,&#39;_&#39;) for s in imp_cols]
+    imp_cols=[s.replace(&#39;_&gt;&#39;,&#39;&#39;) for s in imp_cols]
+    imp_cols=[s.replace(&#39;-&#39;,&#39;_&#39;) for s in imp_cols]
+    imp_cols=[s.lower() for s in imp_cols]
+    impacts.columns=imp_cols
+    return impacts</code></pre>
+</details>
+</dd>
+<dt id="reporting.processing_and_storing_initiatives"><code class="name flex">
+<span>def <span class="ident">processing_and_storing_initiatives</span></span>(<span>initiatives, new_integration)</span>
+</code></dt>
+<dd>
+<section class="desc"><h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>initiatives</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table containing initiatives Data</dd>
+<dt><strong><code>new_integration</code></strong> :&ensp;<code>Object</code></dt>
+<dd>Connection to the DB</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>initiatives</code></strong> :&ensp;<code>Data</code> <code>Frane</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def processing_and_storing_initiatives(initiatives,new_integration):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    initiatives : DataFrame
+        Table containing initiatives Data
+    new_integration : Object
+        Connection to the DB
+    
+    Returns
+    ----------
+    initiatives : Data Frane 
+    &#34;&#34;&#34;
+    
+    init_cols=initiatives.columns.tolist()
+    init_cols=[s.replace(&#39;_-&#39;,&#39;&#39;) for s in init_cols]
+    init_cols=[s.replace(&#39;-&#39;,&#39;_&#39;) for s in init_cols]
+    initiatives.columns=init_cols
+    #Store it in the database 
+    initiatives.to_sql(name=&#39;initiatives&#39;,con=new_integration,index=False,if_exists=&#39;append&#39;)
+    print(&#39;initiatives stored in the database&#39;)
+    return initiatives</code></pre>
+</details>
+</dd>
+<dt id="reporting.processing_and_storing_milestones"><code class="name flex">
+<span>def <span class="ident">processing_and_storing_milestones</span></span>(<span>milestones, new_integration)</span>
+</code></dt>
+<dd>
+<section class="desc"><h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>milestones</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table containing Milestones Data</dd>
+<dt><strong><code>new_integration</code></strong> :&ensp;<code>Object</code></dt>
+<dd>Connection to the DB</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def processing_and_storing_milestones(milestones,new_integration):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    milestones : DataFrame
+        Table containing Milestones Data
+    new_integration : Object
+        Connection to the DB
+    
+    Returns
+    ----------
+    None
+    &#34;&#34;&#34;
+    
+    milestones=milestones.drop(columns=[&#39;initiative_name&#39;])
+    milestones.to_sql(name=&#39;milestones&#39;,con=new_integration,index=False,if_exists=&#39;append&#39;)
+    return print(&#39;milestones stored in the database&#39;)</code></pre>
+</details>
+</dd>
+<dt id="reporting.read_xlsx_files"><code class="name flex">
+<span>def <span class="ident">read_xlsx_files</span></span>(<span>filename)</span>
+</code></dt>
+<dd>
+<section class="desc"><h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table containing Load_id as a column</dd>
+<dt><strong><code>lid</code></strong> :&ensp;<code>int</code></dt>
+<dd>Load id</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>new_data</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def read_xlsx_files(filename):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    data : DataFrame
+        Table containing Load_id as a column
+    lid : int
+        Load id
+    
+    Returns
+    ----------
+    new_data: DataFrame
+    &#34;&#34;&#34; 
+    Initiatives_input = pd.read_excel(filename, &#39;Initiatives&#39;,skiprows=3)
+    Milestones_input = pd.read_excel(filename, &#39;Milestones&#39;,skiprows=3)
+    Impacts_input = pd.read_excel(filename, &#39;Impacts&#39;,skiprows=3)
+    KPI_input = pd.read_excel(filename, &#39;KPI Details&#39;,skiprows=3)
+    return Initiatives_input,Milestones_input,Impacts_input,KPI_input</code></pre>
+</details>
+</dd>
+<dt id="reporting.subsetting_impacts"><code class="name flex">
+<span>def <span class="ident">subsetting_impacts</span></span>(<span>impacts)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>for all the initiatives that are in L1 or L2, if they have a positive run rate value, but all
+of the monthly values (i.e. Jan 2018 - Dec 2021) are zero, the last monthly value (Dec 2021)
+should be overwritten with the run rate value.
+If the initiative is in stage L1, all of the Forecast values are to be overwritten with Plan values.</p>
+<p>If the initiative is in stage L1, all of the Forecast values are to be overwritten with Plan values.
+Impacts temp 2 is the table where:
+1. stage
+= L1 and stage
+= Submitted for L2 approval
+2. purpose = Plan
+3. make the id and add 2 to all of the rows. </p>
+<p>Impacts temp 2 is the table where:
+1. stage
+!= L1 and stage
+!= Submitted for L2 approval
+2. purpose != 'Forecast'
+3. add impacts 2 to impact 3 </p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>impacts</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table containing impacts data</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>impacts</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def subsetting_impacts(impacts):
+    &#34;&#34;&#34;
+    for all the initiatives that are in L1 or L2, if they have a positive run rate value, but all
+    of the monthly values (i.e. Jan 2018 - Dec 2021) are zero, the last monthly value (Dec 2021) 
+    should be overwritten with the run rate value.
+    If the initiative is in stage L1, all of the Forecast values are to be overwritten with Plan values.
+    
+    If the initiative is in stage L1, all of the Forecast values are to be overwritten with Plan values.
+        Impacts temp 2 is the table where: 
+        1. stage  = L1 and stage  = Submitted for L2 approval
+        2. purpose = Plan 
+        3. make the id and add 2 to all of the rows. 
+  
+    Impacts temp 2 is the table where: 
+        1. stage  != L1 and stage  != Submitted for L2 approval
+        2. purpose != &#39;Forecast&#39;
+        3. add impacts 2 to impact 3 
+    
+
+    Parameters
+    ----------
+    impacts : DataFrame
+        Table containing impacts data
+
+    Returns
+    ----------
+    impacts: DataFrame
+    &#34;&#34;&#34;
+    
+    impacts_temp = impacts.copy()
+    # make a checksum for all of the dates 
+    impacts_temp[&#39;checksum&#39;] = impacts_temp.iloc[:, -51:].sum(axis = 1)
+    conditions = [
+        (((impacts_temp[&#39;stage&#39;] == &#39;L1&#39;) |
+                (impacts_temp[&#39;stage&#39;] == &#39;L2&#39;) |
+                (impacts_temp[&#39;stage&#39;] == &#39;Submitted for L2 approval&#39;)|
+                (impacts_temp[&#39;stage&#39;] == &#39;Submitted for L3 approval&#39;)) 
+         &amp; (impacts_temp[&#39;run_rate&#39;] &gt; 0) &amp; (impacts_temp[&#39;checksum&#39;] == 0))
+    ]
+    choices = [impacts_temp[&#39;run_rate&#39;]]
+    
+    impacts_temp[&#39;2021_12_01&#39;] = np.select(conditions, choices, default = impacts_temp[&#39;2021_12_01&#39;])
+    
+    # DELETE Checksum 
+    impacts = impacts_temp.drop([&#39;checksum&#39;], axis = 1)
+    
+    impacts_temp2 = impacts.copy()
+    
+    impacts_temp2 = impacts_temp2[(impacts_temp[&#39;stage&#39;] == &#39;L1&#39;) | (impacts_temp[&#39;stage&#39;] == &#39;Submitted for L2 approval&#39;)]
+    impacts_temp2 = impacts_temp2[impacts_temp2[&#39;purpose&#39;] == &#39;Plan&#39;]
+    
+    impacts_temp2[&#39;purpose&#39;] = impacts_temp2[&#39;purpose&#39;].str.replace(&#39;Plan&#39;, &#39;Forecast&#39;)
+    impacts_temp2[&#39;id&#39;] = impacts_temp2[&#39;id&#39;]+2
+    
+    
+    impacts_temp3 = impacts.copy()
+    impacts_temp3 = impacts_temp3[((impacts_temp3[&#39;stage&#39;] != &#39;L1&#39;) &amp; (impacts_temp3[&#39;stage&#39;] != &#39;Submitted for L2 approval&#39;)) | (impacts_temp3[&#39;purpose&#39;] != &#39;Forecast&#39;)]
+    
+    impacts_temp4 = impacts_temp2.append(impacts_temp3)
+    
+    impacts = impacts_temp4.copy()
+    
+    return impacts</code></pre>
+</details>
+</dd>
+<dt id="reporting.take_maximum_load_index"><code class="name flex">
+<span>def <span class="ident">take_maximum_load_index</span></span>(<span>table, con)</span>
+</code></dt>
+<dd>
+<section class="desc"><h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table containing Load_id as a column</dd>
+<dt><strong><code>lid</code></strong> :&ensp;<code>int</code></dt>
+<dd>Load id</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>new_data</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def take_maximum_load_index(table,con):
+    &#34;&#34;&#34;
+    Parameters
+    ----------
+    data : DataFrame
+        Table containing Load_id as a column
+    lid : int
+        Load id
+    
+    Returns
+    ----------
+    new_data: DataFrame
+    &#34;&#34;&#34; 
+    table_load_id=pd.read_sql(&#39;{} {}&#39;.format(&#34;SELECT max(load_id) FROM&#34;, table),con)
+
+    table_id=pd.read_sql(&#39;{} {}&#39;.format(&#34;SELECT max(id) FROM&#34;, table),con)
+    return table_load_id.iloc[0,0],table_id.iloc[0,0]</code></pre>
+</details>
+</dd>
+<dt id="reporting.transforming_initiatives"><code class="name flex">
+<span>def <span class="ident">transforming_initiatives</span></span>(<span>initiatives, impacts_description, impacts_value, impacts)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Transforming the initiatives and saving the history
+- we want to transform the data so that for every initiative,impact,purpose and saving type we have new calculation of impact values
+- for the P&amp;L new value is the sum of the last 12 months and for Implemented is cumulative sum
+- we do the calculatons for every month beacause we need that for the reports</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>initiatives</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table containing initiative data</dd>
+<dt><strong><code>impacts_description</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table containing impacts_description data</dd>
+<dt><strong><code>impacts_value</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table containing impact_value data</dd>
+<dt><strong><code>impacts</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table containing impacts data</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>impacts_with_new</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table containing impact_value data</dd>
+<dt><strong><code>impacts</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table containing impacts data</dd>
+</dl></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def transforming_initiatives(initiatives,
+                             impacts_description,
+                             impacts_value,
+                             impacts):
+    &#34;&#34;&#34;
+    Transforming the initiatives and saving the history
+    - we want to transform the data so that for every initiative,impact,purpose and saving type we have new calculation of impact values
+    - for the P&amp;L new value is the sum of the last 12 months and for Implemented is cumulative sum
+    - we do the calculatons for every month beacause we need that for the reports
+
+    
+    Parameters
+    ----------
+    initiatives : DataFrame
+        Table containing initiative data
+    impacts_description : DataFrame
+        Table containing impacts_description data
+    impacts_value: DataFrame
+        Table containing impact_value data
+    impacts: DataFrame
+        Table containing impacts data
+        
+    Returns
+    ----------
+    impacts_with_new: DataFrame
+        Table containing impact_value data
+    impacts: DataFrame
+        Table containing impacts data
+    &#34;&#34;&#34;    
+    initiatives=initiatives[[&#39;load_id&#39;,&#39;initiative_id&#39;,&#39;stage&#39;,&#39;weekly_status&#39;,&#39;report&#39;]]
+
+    impacts=impacts_description.merge(impacts_value,how=&#39;inner&#39;,on=[&#39;id&#39;, &#39;load_id&#39;, &#39;impact_id&#39;,&#39;savings_type&#39;])
+    impacts=impacts.merge(initiatives,how=&#39;left&#39;,on=[&#39;load_id&#39;,&#39;initiative_id&#39;])
+    impacts.rename(columns={&#39;impact_value&#39;:&#39;wave_value&#39;},inplace=True)
+    
+    impacts_with_new = impacts
+    impacts_with_new.loc[impacts_with_new.wave_value.isna(),&#39;wave_value&#39;]=0
+    
+    return impacts_with_new,impacts</code></pre>
+</details>
+</dd>
+<dt id="reporting.transofmring_impact_saving_implemented"><code class="name flex">
+<span>def <span class="ident">transofmring_impact_saving_implemented</span></span>(<span>impacts_with_new, impacts)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Transforming impacts
+- we create new column value where we save the calulations and
+make column value_type to know what calculation we did</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>data</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>Table containing Load_id as a column</dd>
+<dt><strong><code>lid</code></strong> :&ensp;<code>int</code></dt>
+<dd>Load id</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>new_data</code></strong> :&ensp;<code>DataFrame</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>Source code</summary>
+<pre><code class="python">def transofmring_impact_saving_implemented(impacts_with_new,impacts):
+    &#34;&#34;&#34;
+    Transforming impacts
+    - we create new column value where we save the calulations and
+     make column value_type to know what calculation we did
+    
+    Parameters
+    ----------
+    data : DataFrame
+        Table containing Load_id as a column
+    lid : int
+        Load id
+    
+    Returns
+    ----------
+    new_data: DataFrame
+    &#34;&#34;&#34; 
+     
+
+
+    
+
+    actual = impacts_with_new[(impacts_with_new.purpose == &#39;Actual&#39;)]
+    forcast = impacts_with_new[(impacts_with_new.purpose == &#39;Forecast&#39;)]
+    
+    actual_forcast = actual.merge(forcast[[&#39;initiative_id&#39;,&#39;impact_id&#39;,&#39;savings_type&#39;,&#39;date&#39;,&#39;wave_value&#39;]],on = [&#39;initiative_id&#39;,&#39;impact_id&#39;,&#39;savings_type&#39;,&#39;date&#39;])
+    actual_forcast[&#39;wave_value&#39;] =actual_forcast.apply(lambda row: row[&#39;wave_value_x&#39;] if row[&#39;wave_value_x&#39;] &gt;0 else row[&#39;wave_value_y&#39;] , axis = 1)
+    actual_forcast[&#39;purpose&#39;] =&#39;Actuals &amp; Forecast&#39;
+    actual_forcast.drop([&#39;wave_value_x&#39;,&#39;wave_value_y&#39;],axis =1,inplace = True )
+    
+    plan = impacts_with_new[(impacts_with_new.purpose == &#39;Plan&#39;) ]
+    impacts_with_new = pd.concat([plan,actual_forcast],ignore_index = True)
+
+    impacts_with_new_selected=impacts_with_new[[&#39;initiative_id&#39;,
+                                                &#39;impact_id&#39;,
+                                                &#39;purpose&#39;,
+                                                &#39;savings_type&#39;,
+                                                &#39;date&#39;,
+                                                &#39;wave_value&#39;,
+                                                &#39;report&#39;]]
+
+    saving = &#39;Implemented&#39;
+    imp=impacts_with_new_selected.query(&#39;savings_type==@saving&#39;) #.copy()
+
+    imp_pln = imp.loc[(imp.purpose==&#39;Plan&#39;),]
+    imp_frc = imp.loc[(imp.purpose==&#39;Actuals &amp; Forecast&#39;),]
+
+    imp.loc[:,&#39;impact_plan_value&#39;]=imp_pln.groupby([&#39;initiative_id&#39;,&#39;impact_id&#39;,&#39;purpose&#39;,&#39;savings_type&#39;]).wave_value.cumsum()
+    imp.loc[:,&#39;impact_forecast_value&#39;]=imp_frc.groupby([&#39;initiative_id&#39;,&#39;impact_id&#39;,&#39;purpose&#39;,&#39;savings_type&#39;]).wave_value.cumsum()
+
+
+    imp.loc[:,&#39;pl_plan_value&#39;] = 0
+    imp.loc[:,&#39;pl_forecast_value&#39;] = 0
+    
+    imp[&#39;value_type&#39;] = &#39;running_total&#39;
+    
+    imp[&#39;impact_plan_value&#39;].fillna(0, inplace=True)
+    imp[&#39;impact_forecast_value&#39;].fillna(0, inplace=True)
+    
+    
+    saving=&#39;P&amp;L&#39;
+#    impacts.loc[impacts.wave_value.isna(),&#39;wave_value&#39;]=0
+    pl_act = impacts_with_new_selected.query(&#39;savings_type==@saving&#39;)
+    pl_act = pl_act.loc[(pl_act.purpose==&#39;Actuals &amp; Forecast&#39;),]
+    
+    pl_act[&#39;impact_plan_value&#39;] = 0
+    pl_act[&#39;impact_forecast_value&#39;] = 0
+
+    pl_act = create_value_type_columns(pl_act,flag = 0)
+
+    pl_pln = impacts_with_new_selected.query(&#39;savings_type==@saving&#39;)
+    pl_pln = pl_pln.loc[(pl_pln.purpose==&#39;Plan&#39;),]
+    
+    pl_pln[&#39;impact_plan_value&#39;] = 0
+    pl_pln[&#39;impact_forecast_value&#39;] = 0
+     
+    
+    pl_pln = create_value_type_columns(pl_pln,flag = 1)
+    
+   
+    
+    pl = pl_act.append(pl_pln)
+    
+    impacts_all=pl.append(imp,ignore_index=True)
+    
+    impacts_out=impacts_with_new.merge(impacts_all,how=&#39;left&#39;,on=[&#39;initiative_id&#39;,&#39;impact_id&#39;,\
+                                                        &#39;purpose&#39;,&#39;savings_type&#39;, &#39;wave_value&#39;, &#39;date&#39;,&#39;report&#39;])
+    
+    
+       
+    return impacts_out </code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="reporting.change_the_impact_status" href="#reporting.change_the_impact_status">change_the_impact_status</a></code></li>
+<li><code><a title="reporting.check_new_table_loaded" href="#reporting.check_new_table_loaded">check_new_table_loaded</a></code></li>
+<li><code><a title="reporting.closing_sessions" href="#reporting.closing_sessions">closing_sessions</a></code></li>
+<li><code><a title="reporting.create_and_store_impact_value" href="#reporting.create_and_store_impact_value">create_and_store_impact_value</a></code></li>
+<li><code><a title="reporting.create_and_store_kpi_descriptions" href="#reporting.create_and_store_kpi_descriptions">create_and_store_kpi_descriptions</a></code></li>
+<li><code><a title="reporting.create_and_store_kpi_value" href="#reporting.create_and_store_kpi_value">create_and_store_kpi_value</a></code></li>
+<li><code><a title="reporting.create_impact_description_and_store" href="#reporting.create_impact_description_and_store">create_impact_description_and_store</a></code></li>
+<li><code><a title="reporting.create_load_index" href="#reporting.create_load_index">create_load_index</a></code></li>
+<li><code><a title="reporting.create_new_columns_and_impace_2" href="#reporting.create_new_columns_and_impace_2">create_new_columns_and_impace_2</a></code></li>
+<li><code><a title="reporting.create_value_type_columns" href="#reporting.create_value_type_columns">create_value_type_columns</a></code></li>
+<li><code><a title="reporting.creating_impact_simple" href="#reporting.creating_impact_simple">creating_impact_simple</a></code></li>
+<li><code><a title="reporting.filter_category" href="#reporting.filter_category">filter_category</a></code></li>
+<li><code><a title="reporting.filter_load_id" href="#reporting.filter_load_id">filter_load_id</a></code></li>
+<li><code><a title="reporting.initialize_columns" href="#reporting.initialize_columns">initialize_columns</a></code></li>
+<li><code><a title="reporting.loading_table" href="#reporting.loading_table">loading_table</a></code></li>
+<li><code><a title="reporting.loading_tables" href="#reporting.loading_tables">loading_tables</a></code></li>
+<li><code><a title="reporting.pre_process_impact_columns" href="#reporting.pre_process_impact_columns">pre_process_impact_columns</a></code></li>
+<li><code><a title="reporting.processing_and_storing_initiatives" href="#reporting.processing_and_storing_initiatives">processing_and_storing_initiatives</a></code></li>
+<li><code><a title="reporting.processing_and_storing_milestones" href="#reporting.processing_and_storing_milestones">processing_and_storing_milestones</a></code></li>
+<li><code><a title="reporting.read_xlsx_files" href="#reporting.read_xlsx_files">read_xlsx_files</a></code></li>
+<li><code><a title="reporting.subsetting_impacts" href="#reporting.subsetting_impacts">subsetting_impacts</a></code></li>
+<li><code><a title="reporting.take_maximum_load_index" href="#reporting.take_maximum_load_index">take_maximum_load_index</a></code></li>
+<li><code><a title="reporting.transforming_initiatives" href="#reporting.transforming_initiatives">transforming_initiatives</a></code></li>
+<li><code><a title="reporting.transofmring_impact_saving_implemented" href="#reporting.transofmring_impact_saving_implemented">transofmring_impact_saving_implemented</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.6.2</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>
